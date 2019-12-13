@@ -1,7 +1,69 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# USERS
+# User.create(f_name: "Saul", l_name: "Feliz", address: "9304 Roxanna Dr Austin, TX 78748", balance: 100, avg_rating: 4.9, pic_link: "https://randomuser.me/api/portraits/men/3.jpg", password: "123", email: "646634@gmail.com") 
+# User.create(f_name: "James", l_name: "Smith", address: "115 Sandra Muraida Ln Austin, TX 78703", balance: 81, avg_rating: 4.1, pic_link: "https://randomuser.me/api/portraits/men/4.jpg", password: "123", email: "james@gsmith.com")
+# User.create(f_name: "Jason", l_name: "Helms", address: "403 Orchard St Austin, TX 78703", balance: 57, avg_rating: 308, pic_link: "https://randomuser.me/api/portraits/men/5.jpg", password: "123", email: "jason@helms.com")
+# User.create(f_name: "Rita", l_name: "Gibson", address: "621 Congress Ave Austin, TX 78701", balance: 97, avg_rating: 5.0, pic_link: "https://randomuser.me/api/portraits/women/80.jpg", password: "123", email: "rita@gibson.com")
+# User.create(f_name: "Winston", l_name: "Barnes", address: "1133 E 11th St Austin, TX 78702",balance: 99, avg_rating: 4.9, pic_link: "https://randomuser.me/api/portraits/men/6.jpg", password: "123", email: "winston@barnes.com")
+# User.create(f_name: "Mike", l_name: "Tiome", address: "9116 Colberg Dr, Austin, TX 78749", balance: 53, avg_rating: 3.6, pic_link: "https://randomuser.me/api/portraits/men/7.jpg", password: "123", email: "mike@tiome.com")
+# User.create(f_name: "Eric", l_name: "Phelz", address: "4504 Travis Country Cir, Austin, TX 78735", balance: 10, avg_rating: 2.1, pic_link: "https://randomuser.me/api/portraits/men/8.jpg", password: "123", email: "eric@phelz.com")
+# User.create(f_name: "Hank", l_name: "Lorne", address: "4710 E 5th St Austin, TX 78702", balance: 19, avg_rating: 4.1, pic_link: "https://randomuser.me/api/portraits/men/9.jpg", password: "123", email: "hank@lorne.com")
+# User.create(f_name: "Maria", l_name: "Halju", address: "101 Hergotz Ln Austin, TX 78742", balance: 11, avg_rating: 2.0, pic_link: "https://randomuser.me/api/portraits/women/3.jpg", password: "123", email: "646634@gmail.com")
+# User.create(f_name: "Terrance", l_name: "Crespo", address: "1505 Town Creek Dr Austin, TX 78741", balance: 27, avg_rating: 3.3, pic_link: "https://randomuser.me/api/portraits/men/10.jpg", password: "123", email: "t@crespo.com")
+# User.create(f_name: "Greg", l_name: "Perez", address: "406 Brady Ln, Austin, TX 78746", balance: 99, avg_rating: 3.9, pic_link: "https://randomuser.me/api/portraits/men/11.jpg", password: "123", email: "greg@perez.com")
+# User.create(f_name: "Isabel", l_name: "Tyler", address: "2336 Douglas St Austin, TX 78741", balance: 88, avg_rating: 3.8, pic_link: "https://randomuser.me/api/portraits/women/4.jpg", password: "123", email: "isabel@tyler.com")
+# User.create(f_name: "Camila", l_name: "Towns", address: "1503 Spring Garden Rd, Austin, TX 78746", balance: 85, avg_rating: 5.0, pic_link: "https://randomuser.me/api/portraits/women/5.jpg", password: "123", email: "camila@towns.com")
+# User.create(f_name: "Peter", l_name: "Nieves", address: "2514 Business Center Dr Austin, TX 78744", balance: 53, avg_rating: 4.8, pic_link: "https://randomuser.me/api/portraits/men/12.jpg", password: "123", email: "peter@nieves.com")
+# User.create(f_name: "Wanda", l_name: "Grant", address: "2009 Arthur Ln Austin, TX 78704", balance: 49, avg_rating: 4.6, pic_link: "https://randomuser.me/api/portraits/women/6.jpg", password: "123", email: "wanda@grant.com")
+# User.create(f_name: "Nick", l_name: "Leon", address: "3603 Southridge Dr Austin, TX 78704", balance: 9, avg_rating: 4.8, pic_link: "https://randomuser.me/api/portraits/men/13.jpg", password: "123", email: "nick@leon.com")
+# User.create(f_name: "Jenny", l_name: "Rose", address: "2034 W Stassney Ln Austin, TX 78745", balance: 12, avg_rating: 5.0, pic_link: "https://randomuser.me/api/portraits/women/7.jpg", password: "123", email: "jenny@rose.com")
+# User.create(f_name: "Patty", l_name: "Huuz", address: "8214 Kearsarge Dr, Austin, TX 78745", balance: 0, avg_rating: 4.2, pic_link: "https://randomuser.me/api/portraits/women/8.jpg", password: "123", email: "pat@huuz.com")
+# User.create(f_name: "Sabrina", l_name: "Seck", address: "3110 Windsor Rd, Austin, TX 78703", balance: 5, avg_rating: 3.2, pic_link: "https://randomuser.me/api/portraits/women/9.jpg", password: "123", email: "sabrina@seck.com")
+# User.create(f_name: "April", l_name: "Simon", address: "4900 Old Manor Rd, Austin, TX 78723", balance: 15, avg_rating: 4.6, pic_link: "https://randomuser.me/api/portraits/women/10.jpg", password: "123", email: "april@simon.com")
+# User.create(f_name: "Sandra", l_name: "Rock", address: "6700 Burnet Rd, Austin, TX 78757", balance: 27, avg_rating: 3.6, pic_link: "https://randomuser.me/api/portraits/women/11.jpg", password: "123", email: "s@rock.com")
+# User.create(f_name: "Carmen", l_name: "Jenson", address: "7600 Chevy Chase Dr, Austin, TX 78752", balance: 33, avg_rating: 4.2, pic_link: "https://randomuser.me/api/portraits/women/12.jpg", password: "123", email: "car@jasnson.com")
+# User.create(f_name: "Caroline", l_name: "Hanson", address: "7759 Johnny Morris Rd, Austin, TX 78724", balance: 42, avg_rating: 1.5, pic_link: "https://randomuser.me/api/portraits/women/13.jpg", password: "123", email: "carol@hanson.com")
+# User.create(f_name: "Jacky", l_name: "Benson", address: "7005 Timarou Terrace, Austin, TX 78754", balance: 89, avg_rating: 3.2, pic_link: "https://randomuser.me/api/portraits/women/14.jpg", password: "123", email: "jacky@benson.com")
+# User.create(f_name: "Felicia", l_name: "Kennedy", address: "2601 Esperanza Crossing, Austin, TX 78758", balance: 15, avg_rating: 4.9, pic_link: "https://randomuser.me/api/portraits/women/15.jpg", password: "123", email: "felicia@kennedy.com") 
+# User.create(f_name: "Ken", l_name: "Song", address: "12515-3 Research Park Loop, Austin, TX 78759", balance: 41, avg_rating: 4.9, pic_link: "https://randomuser.me/api/portraits/men/15.jpg", password: "123", email: "kenny@yang.com") 
+# User.create(f_name: "Amelia", l_name: "Estrella", address: "708 Maltese Cross Dr, Austin, TX 78748", balance: 17, avg_rating: 4.9, pic_link: "https://randomuser.me/api/portraits/women/16.jpg", password: "123", email: "amelia@star.com") 
+
+# LISTINGS
+# Listing.create(user_id:2, price:1.50, max_hold: 3)
+# Listing.create(user_id:3, price:1.75, max_hold: 6)
+# Listing.create(user_id:4, price:2.00, max_hold: 7)
+# Listing.create(user_id:5, price:1.50, max_hold: 3)
+# Listing.create(user_id:6, price:1.45, max_hold: 7)
+# Listing.create(user_id:7, price:1.30, max_hold: 5)
+# Listing.create(user_id:8, price:1.00, max_hold: 6)
+# Listing.create(user_id:9, price:1.00, max_hold: 6)
+# Listing.create(user_id:10, price:1.00, max_hold: 6)
+# Listing.create(user_id:11, price:0.95, max_hold: 7)
+# Listing.create(user_id:12, price:0.85, max_hold: 15)
+# Listing.create(user_id:13, price:1.15, max_hold: 5)
+# Listing.create(user_id:14, price:1.10, max_hold: 3)
+# Listing.create(user_id:15, price:1.00, max_hold: 7)
+# Listing.create(user_id:16, price:0.95, max_hold: 7)
+# Listing.create(user_id:17, price:1.25, max_hold: 5)
+# Listing.create(user_id:18, price:1.00, max_hold: 3)
+# Listing.create(user_id:19, price:1.25, max_hold: 2)
+# Listing.create(user_id:20, price:1.15, max_hold: 2)
+# Listing.create(user_id:21, price:1.45, max_hold: 6)
+# Listing.create(user_id:22, price:1.00, max_hold: 5)
+# Listing.create(user_id:23, price:0.75, max_hold: 5)
+# Listing.create(user_id:24, price:0.80, max_hold: 7)
+# Listing.create(user_id:25, price:1.18, max_hold: 5)
+# Listing.create(user_id:26, price:1.20, max_hold: 6)
+# Listing.create(user_id:27, price:1.00, max_hold: 7)
+
+# COMMENTS
+# Comment.create(user_id: 1, listing_id: 1, text: "Only 3 days?")
+# Comment.create(user_id: 2, listing_id: 1, text: "I don't have that much space")
+
+# ORDERS
+# Order.create(listing_id: 1, cust_user_id: 1, defender_user_id: 2, sender: "Amazon", status: "Complete", name_on_pack: "Saul Feliz", meeting: "12/15/2019", eta: "12/14/2019", price: 1.50, cust_rating: 5, defd_rating: 5)
+# Order.create(listing_id: 26, cust_user_id: 1, defender_user_id: 27, sender: "Brenda Johnson", status: "In Transit", name_on_pack: "Camille Feliz", meeting: "01/24/2020", eta: "01/23/2020", price: 1.00, cust_rating: "", defd_rating: "")
+
+# o = Order.where(:listing_id => 26).first
+# o.meeting = Date.new(2020,01,24)
+# o.save
+
