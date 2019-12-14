@@ -1,8 +1,7 @@
 class User < ApplicationRecord
+    has_many :listings
     has_many :comments 
-    has_many :comments, through: :listings
     has_many :orders
-    has_many :orders, through: :listings
 
     has_secure_password
     

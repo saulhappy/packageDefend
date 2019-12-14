@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :address
       t.integer :balance
-      t.float :avg_rating
+      t.float :rating
       t.string :pic_link
       t.string :password
 
