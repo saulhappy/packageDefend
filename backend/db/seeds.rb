@@ -63,6 +63,7 @@ Comment.create(user_id: 2, listing_id: 1, text: "Awesome! Thanks! :-)")
 
 
 # ORDERS
-Order.create(listing_id: 1, user_id: 1, sender: "Amazon", status: "Completed", name_on_pack: "Saul Feliz", eta: Date.new(2019,12,12), meeting: Date.new(2019,12,15), rating: 5)
-Order.create(listing_id: 26, user_id: 1, sender: "Brenda Johnson", status: "In Transit", name_on_pack: "Camille Feliz", eta: Date.new(2020,01,23), meeting: Date.new(2020,01,24), rating: "")
+Order.create(listing_id: 1, user_id: 1, sender: "Amazon", status: "Completed", name_on_pack: "Saul Feliz", eta: Date.new(2019,11,12), meeting: Date.new(2019,11,15), rating: 5)
+Order.create(listing_id: 24, user_id: 1, sender: "Bonobos", status: "Completed", name_on_pack: "Camille Feliz", eta: Date.new(2019,12,3), meeting: Date.new(2019,12,5), rating: 4)
+Order.create(listing_id: 1, user_id: 1, sender: "Brenda Johnson", status: "In Transit", name_on_pack: "Saul Feliz", eta: Date.new(2020,01,12), meeting: Date.new(2020,01,15), rating: "")
 Order.create(listing_id: 2, user_id: 3, sender: "Amazon", status: "In Transit", name_on_pack: "Tom Brent", eta: Date.new(2020,01,15), meeting: "", rating: "")
