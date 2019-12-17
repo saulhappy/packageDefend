@@ -94,6 +94,9 @@ class Signup extends Component {
       fetch("http://localhost:3000/api/users", configObject).then(response =>
         response.json().then(data => {
           console.log(data);
+          data.status === 200
+            ? this.props.history.push("/success")
+            : this.props.history.push("/signup");
         })
       );
     } else {
@@ -107,7 +110,7 @@ class Signup extends Component {
     return (
       <React.Fragment>
         <Form onSubmit={this.handleSubmit}>
-          <h2>Sign Up</h2>
+          <h2>Create an Account</h2>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>First Name</Form.Label>
@@ -198,31 +201,13 @@ class Signup extends Component {
               </span>
             )}
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Sign Up!
+          <Button bg="dark" variant="dark" type="submit">
+            Sign Me Up!
           </Button>
         </Form>
         <br></br>
         <br></br>
         <br></br>
-        {/* <Form>
-          <h2>Login</h2>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Email" />
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-          </Form.Row>
-          <Button variant="primary" type="submit">
-            Login!
-          </Button>
-        </Form> */}
       </React.Fragment>
     );
   }
