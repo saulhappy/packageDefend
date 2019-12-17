@@ -25,7 +25,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params, balance: 100, rating: nil, pic_link: "https://www.libarts.colostate.edu/music/wp-content/mu-plugins/cla-people/templates/userphoto.png") 
+    @user = User.new(user_params) 
+    # set default values for users
+    @user[:balance] = 100
+    @user[:rating] = nil
+    @user[:pic_link] = "https://www.libarts.colostate.edu/music/wp-content/mu-plugins/cla-people/templates/userphoto.png"
     if @user.valid?
       @user.save
       render json: {
@@ -36,7 +40,7 @@ class UsersController < ApplicationController
     else
       render json: {
         status: 500,
-        errors: "Could not create user. User or email already exists. Password must be greather than 3 characters"
+        errors: ""
       }
     end
   end 

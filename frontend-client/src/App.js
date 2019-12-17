@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./containers/Home";
 import { About } from "./containers/About";
-import SignupLogin from "./containers/SignupLogin/index";
+import Signup from "./containers/Signup/index";
+import Login from "./containers/Login/index";
 import { NotFound } from "./containers/NotFound";
 import { Layout } from "./components/Layout";
 import { TopNavbar } from "./components/TopNavbar";
@@ -19,7 +20,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
-              <Route path="/signuplogin" component={SignupLogin} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/Login" component={Login} />
               <Route component={NotFound} />
             </Switch>
           </Layout>
