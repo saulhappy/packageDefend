@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Stats } from "../components/Stats";
 
-export class Home extends Component {
+export class Landing extends Component {
   render() {
     return (
       <React.Fragment>
