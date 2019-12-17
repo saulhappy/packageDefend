@@ -67,21 +67,35 @@ class Signup extends Component {
       default:
         break;
     }
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({ formErrors, [name]: value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      console.log(`
-        --SUBMITTING--
-        First Name: ${this.state.f_name}
-        Last Name: ${this.state.l_name}
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-        Address: ${this.state.address}
-      `);
+      let newUser = {
+        f_name: this.state.f_name,
+        l_name: this.state.l_name,
+        email: this.state.email,
+        password: this.state.password,
+        address: this.state.address
+      };
+
+      const configObject = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(newUser)
+      };
+
+      fetch("http://localhost:3000/api/users", configObject).then(response =>
+        response.json().then(data => {
+          console.log(data);
+        })
+      );
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
@@ -103,6 +117,7 @@ class Signup extends Component {
                     ? "signup-create-errorBorder"
                     : null
                 }
+                isInvalid={formErrors.f_name}
                 name="f_name"
                 type="text"
                 placeholder="First Name"
