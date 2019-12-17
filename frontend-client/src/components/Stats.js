@@ -10,8 +10,8 @@ const Styles = styled.div`
   }
 
   .col {
-    border: solid black 1px;
-    border-radius: 3px;
+    border: 1px;
+    border-radius: 100px;
     margin-right: 20px;
     text-align: center;
   }
@@ -19,13 +19,21 @@ const Styles = styled.div`
   .end-col {
     margin-right: 0px;
   }
+  .stat-text {
+    font-size: 80px;
+  }
 
   .helper-text {
-    text-align: left;
+    text-align: center;
+    color: #727372;
   }
 
   .statistic-box {
     padding: 60px 0 60px 0;
+  }
+  .source-text{
+    color: #a6a6a6
+    font-size: 12px;
   }
 `;
 
@@ -35,29 +43,33 @@ export const Stats = () => (
       <Row>
         <Col>
           <div className="statistic-box">
-            <h1>36%</h1>
-            <h6 className="helper-text">
-              This is a statistic for package theft.
-            </h6>
+            <h1 className="stat-text">36%</h1>
+            <h6 className="helper-text">Have had a package stolen.</h6>
           </div>
         </Col>
         <Col>
           <div className="statistic-box">
-            <h1>36%</h1>
+            <h1 className="stat-text">56%</h1>
             <h6 className="helper-text">
-              This is a statistic for package theft.
+              Know someone who's had a package stolen.
             </h6>
           </div>
         </Col>
         <Col className="end-col">
           <div className="statistic-box">
-            <h1>36%</h1>
+            <h1 className="stat-text">42%</h1>
             <h6 className="helper-text">
-              This is a statistic for package theft.
+              Avoid making online purchases due to the threat of package theft.
             </h6>
           </div>
         </Col>
       </Row>
     </Container>
+    <div>
+      <h6 className="source-text">
+        *C+R Research 2019 Package Theft Statistics Report
+      </h6>
+    </div>
+    <br></br>
   </Styles>
 );

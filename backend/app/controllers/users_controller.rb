@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params) 
+    @user = User.new(user_params, balance: 100, rating: nil, pic_link: "https://www.libarts.colostate.edu/music/wp-content/mu-plugins/cla-people/templates/userphoto.png") 
     if @user.valid?
       @user.save
       render json: {
