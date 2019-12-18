@@ -32,9 +32,12 @@ class UsersController < ApplicationController
     @user[:pic_link] = "https://www.libarts.colostate.edu/music/wp-content/mu-plugins/cla-people/templates/userphoto.png"
     if @user.valid?
       @user.save
+      @payload = {user_id: @user.id}
+      @token = encode_token(payload)
       render json: {
         status: 200,
-        message: "New user saved!"
+        message: "New user saved!",
+        jwt: @token
       }
 
     else
