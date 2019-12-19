@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:index, :create, :show]
 
   def index 
     @users = User.all
@@ -49,7 +51,7 @@ class UsersController < ApplicationController
 
   def user_serializer
     {
-      :only => [:f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
+      :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
       :include => [:orders, :listings, :comments]}
   end
 
