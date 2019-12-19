@@ -1,37 +1,27 @@
 class ApplicationController < ActionController::API
-    before_action :require_login
+    include ActionController::Helpers
+    helper_method :current_user
 
-    def encode_token(payload)
-        JWT.encode(payload, 'Isabel')
-    end
 
-    def auth_header
-        request.headers['Authorization']
-    end
-
-    def decoded_token
-        if auth_header
-            token = auth_header.split(' ')[1]
-            begin
-                JWT.decode(token, 'Isabel', true, algorithm: 'HS256')
-            rescue JWT::DecodeError
-                []
-            end
-        end
-    end
-
-    def session_user
-        if decoded_token
-            user_id = decoded_token[0]['user_id']
-            @user = User.find_by(id: user_id)
-        end
-    end
-
-    def logged_in?
-        !!session_user
+    def current_user
+      if session[:user_id]
+        @current_user ||= User.find(session[:user_id])
+      else
+        @current_user = nil
+      end
     end
 
     def require_login
-     render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
+        if !logged_in?
+            redirect_to login_path
+        end
+
     end
+
+    def logged_in?
+        session[user_id]
+    end
+
+
+
 end

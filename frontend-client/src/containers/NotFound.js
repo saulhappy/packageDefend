@@ -11,5 +11,9 @@ export const NotFound = () => (
         Go Home
       </Button>
     </Link>
+    <br></br>
+    <br></br>
+    <p>or</p>
+    <a href="/users/login">Log In</a>
   </div>
 );

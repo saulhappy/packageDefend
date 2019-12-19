@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 
-export class index extends Component {
+export class Home extends Component {
   render() {
     return (
       <React.Fragment>
@@ -67,4 +67,4 @@ export class index extends Component {
   }
 }
 
-export default index;
+export default Home;

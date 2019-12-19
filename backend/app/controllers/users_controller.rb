@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:index, :create, :show]
 
   def index 
     @users = User.all
@@ -32,12 +34,9 @@ class UsersController < ApplicationController
     @user[:pic_link] = "https://www.libarts.colostate.edu/music/wp-content/mu-plugins/cla-people/templates/userphoto.png"
     if @user.valid?
       @user.save
-      @payload = {user_id: @user.id}
-      @token = encode_token(payload)
       render json: {
         status: 200,
-        message: "New user saved!",
-        jwt: @token
+        message: "New user saved!"
       }
 
     else
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
 
   def user_serializer
     {
-      :only => [:f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
+      :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
       :include => [:orders, :listings, :comments]}
   end
 

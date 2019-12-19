@@ -20,7 +20,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class Signup extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
 
@@ -91,13 +91,14 @@ class Signup extends Component {
         body: JSON.stringify(newUser)
       };
 
-      fetch("http://localhost:3000/api/users", configObject).then(response =>
-        response.json().then(data => {
-          console.log(data);
-          data.status === 200
-            ? this.props.history.push("/success")
-            : this.props.history.push("/signup");
-        })
+      fetch("http://localhost:3000/api/users/new", configObject).then(
+        response =>
+          response.json().then(data => {
+            console.log(data);
+            data.status === 200
+              ? this.props.history.push("/success")
+              : this.props.history.push("/signup");
+          })
       );
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
@@ -213,4 +214,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default SignupForm;
