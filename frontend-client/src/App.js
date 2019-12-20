@@ -16,19 +16,12 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      logged_in: true,
+      logged_in: false,
       user: null,
       userOrders: null,
       userListings: null
     };
   }
-
-  componentDidMount() {
-    this.loginStatus();
-  }
-
-  loginStatus() {}
-
   setUserState = newUser => {
     this.setState({
       logged_in: true,
@@ -36,13 +29,23 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    fetch(`http://localhost:3000/api/users/${localStorage.getItem("user_id")}`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          userOrders: data.orders,
+          userListings: data.listings
+        });
+      });
+  }
+
   logOutUser = user => {
-    console.log("logging out user");
     localStorage.removeItem("user_id");
   };
 
   render() {
-    console.log(this.state);
+    console.log("app's state: ", this.state);
     return (
       <React.Fragment>
         <Router>
@@ -55,16 +58,13 @@ class App extends Component {
               <Route exact path="/users/new" component={SignUpForm} />
               <Route exact path="/success" component={Success} />
               <Route exact path="/users/login">
-                {" "}
-                <LogInForm setUserState={this.setUserState} />{" "}
+                <LogInForm setUserState={this.setUserState} />
               </Route>
-              {this.state.logged_in ? (
-                <Route exact path="/users/home" component={Home} />
-              ) : (
-                <Route component={NotFound} />
+              {this.state.logged_in && (
+                <Route exact path="/users/home">
+                  <Home userState={this.state} />
+                </Route>
               )}
-
-              {/* <Route exact path="/users/home" component={Home} /> */}
               <Route exact path="/logout" component={Logout} />
               <Route component={NotFound} />
             </Switch>

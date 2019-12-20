@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, Table } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { OrdersContainer } from "../Orders/OrdersContainer";
 
 export class Home extends Component {
   render() {
+    console.log("from home: ", this.props.userState);
     return (
       <React.Fragment>
         <div>
-          <h3>Your recent Activity</h3>
+          <h3>{`${this.props.userState.user.f_name}'s`} activity</h3>
+          <p>Your balance: {`${this.props.userState.user.balance}`}</p>
           <br></br>
           <Container>
             <Row>
@@ -28,40 +31,7 @@ export class Home extends Component {
           </Container>
         </div>
         <br></br>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>Defend Order Date</th>
-              <th>Defender</th>
-              <th>Status</th>
-              <th>Package ETA</th>
-              <th>Meeting Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-            </tr>
-            <tr>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-            </tr>
-            <tr>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-            </tr>
-          </tbody>
-        </Table>
+        <OrdersContainer userOrders={this.props.userState.userOrders} />
       </React.Fragment>
     );
   }

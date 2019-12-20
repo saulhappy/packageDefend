@@ -36,7 +36,6 @@ function LogInForm(props) {
             props.setUserState(data.user);
             localStorage.setItem("user_id", data.user.id);
             props.history.push("/users/home");
-            // window.location.reload();
             break;
           case 404:
             let error = {};
@@ -47,8 +46,8 @@ function LogInForm(props) {
             break;
         }
       });
-    setEmail("");
-    setPassword("");
+    setEmail("646634@gmail.com");
+    setPassword("123");
   };
 
   return (
@@ -61,10 +60,10 @@ function LogInForm(props) {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             value={email}
+            // value={"646634@gmail.com"}
             isInvalid={error.login}
             onChange={handleEmailChange}
             type="email"
-            placeholder="Enter email"
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -75,6 +74,7 @@ function LogInForm(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control
             value={password}
+            // value={123}
             isInvalid={error.login}
             onChange={handlePasswordChange}
             type="password"
