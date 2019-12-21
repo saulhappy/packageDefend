@@ -19,7 +19,17 @@ class App extends Component {
       logged_in: false,
       user: null,
       userOrders: null,
-      userListings: null
+      userListings: null,
+      clickedOrderId: null,
+      orderOpen: false,
+      clickedOrderListing_id: null,
+      clickedOrderSender: null,
+      clickedOrderStatus: null,
+      clickedOrderNameOnPack: null,
+      clickedOrderETA: null,
+      clickedOrderMeeting: null,
+      clickedOrderRating: null,
+      clickedOrderCreated: null
     };
   }
   setUserState = newUser => {
@@ -39,6 +49,24 @@ class App extends Component {
         });
       });
   }
+  handleClickedOrder = orderId => {
+    fetch(`http://localhost:3000/api/orders/${orderId}`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          clickedOrderId: orderId,
+          orderOpen: !this.state.orderOpen,
+          clickedOrderListing_id: data.order.listing_id,
+          clickedOrderSender: data.order.sender,
+          clickedOrderStatus: data.order.status,
+          clickedOrderNameOnPack: data.order.name_on_pack,
+          clickedOrderETA: data.order.eta,
+          clickedOrderMeeting: data.order.meeting,
+          clickedOrderRating: data.order.rating,
+          clickedOrderCreated: data.order.created_at
+        })
+      );
+  };
 
   logOutUser = user => {
     localStorage.removeItem("user_id");
@@ -46,6 +74,7 @@ class App extends Component {
 
   render() {
     console.log("app's state: ", this.state);
+
     return (
       <React.Fragment>
         <Router>
@@ -62,7 +91,10 @@ class App extends Component {
               </Route>
               {this.state.logged_in && (
                 <Route exact path="/users/home">
-                  <Home userState={this.state} />
+                  <Home
+                    userState={this.state}
+                    clickedOrder={this.handleClickedOrder}
+                  />
                 </Route>
               )}
               <Route exact path="/logout" component={Logout} />

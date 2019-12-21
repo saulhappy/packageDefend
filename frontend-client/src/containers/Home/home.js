@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { OrdersContainer } from "../Orders/OrdersContainer";
+import Orders from "../../components/Orders";
 
 export class Home extends Component {
   render() {
-    console.log("from home: ", this.props.userState);
     return (
       <React.Fragment>
         <div>
@@ -28,10 +28,15 @@ export class Home extends Component {
                 </Button>
               </Col>
             </Row>
+            <br></br>
+            {this.props.userState.clickedOrderId ? <Orders /> : null}
           </Container>
         </div>
         <br></br>
-        <OrdersContainer userOrders={this.props.userState.userOrders} />
+        <OrdersContainer
+          userState={this.props.userState}
+          clickedOrder={this.props.clickedOrder}
+        />
       </React.Fragment>
     );
   }

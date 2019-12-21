@@ -7,15 +7,15 @@ class ListingsController < ApplicationController
       end
 
     def show
-        user_id = params[:id]
-        @user = User.find(params[:id])
-        if logged_in? && @user == current_user
-          listings = Listing.where(user_id: user_id)
-          render json: {
-            listings: listings
+        listing = params[:id]
+        listing = Listing.find(params[:id])
+        render json: {
+            listing: listing
           }
-        end
-      end
-    
+    end
+
+  def listing_params
+    params.require(:listing).permit(:price, :max_hold, :created_at, :updated_at)
+  end
   
 end
