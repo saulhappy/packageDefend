@@ -19,13 +19,20 @@ class App extends Component {
       logged_in: false,
       user: null,
       userOrders: null,
-      userListings: null
+      userListings: null,
+      clickedOrderId: null
     };
   }
   setUserState = newUser => {
     this.setState({
       logged_in: true,
       user: newUser
+    });
+  };
+
+  setClickedOrder = orderId => {
+    this.setState({
+      clickedOrderId: orderId
     });
   };
 
@@ -46,6 +53,7 @@ class App extends Component {
 
   render() {
     console.log("app's state: ", this.state);
+
     return (
       <React.Fragment>
         <Router>
@@ -62,7 +70,10 @@ class App extends Component {
               </Route>
               {this.state.logged_in && (
                 <Route exact path="/users/home">
-                  <Home userState={this.state} />
+                  <Home
+                    userState={this.state}
+                    clickedOrderId={this.setClickedOrder}
+                  />
                 </Route>
               )}
               <Route exact path="/logout" component={Logout} />

@@ -46,8 +46,8 @@ function LogInForm(props) {
             break;
         }
       });
-    setEmail("646634@gmail.com");
-    setPassword("123");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -60,10 +60,10 @@ function LogInForm(props) {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             value={email}
-            // value={"646634@gmail.com"}
             isInvalid={error.login}
             onChange={handleEmailChange}
             type="email"
+            placeholder="Email Address"
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -74,7 +74,6 @@ function LogInForm(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control
             value={password}
-            // value={123}
             isInvalid={error.login}
             onChange={handlePasswordChange}
             type="password"
