@@ -24,7 +24,7 @@ export class OrdersContainer extends Component {
                   <tr
                     className="clickable-row"
                     key={i}
-                    onClick={() => this.props.clickedOrderId(order.id)}
+                    onClick={() => this.props.clickedOrder(order.id)}
                   >
                     <td>{order.created_at.substr(0, 10)}</td>
                     <td>{order.sender}</td>

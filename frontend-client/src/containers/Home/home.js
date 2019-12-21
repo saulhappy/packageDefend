@@ -5,7 +5,6 @@ import Orders from "../../components/Orders";
 
 export class Home extends Component {
   render() {
-    console.log("from home: ", this.props);
     return (
       <React.Fragment>
         <div>
@@ -36,7 +35,7 @@ export class Home extends Component {
         <br></br>
         <OrdersContainer
           userState={this.props.userState}
-          clickedOrderId={this.props.clickedOrderId}
+          clickedOrder={this.props.clickedOrder}
         />
       </React.Fragment>
     );

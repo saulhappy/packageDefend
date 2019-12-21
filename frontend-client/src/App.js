@@ -20,19 +20,22 @@ class App extends Component {
       user: null,
       userOrders: null,
       userListings: null,
-      clickedOrderId: null
+      clickedOrderId: null,
+      orderOpen: false,
+      clickedOrderListing_id: null,
+      clickedOrderSender: null,
+      clickedOrderStatus: null,
+      clickedOrderNameOnPack: null,
+      clickedOrderETA: null,
+      clickedOrderMeeting: null,
+      clickedOrderRating: null,
+      clickedOrderCreated: null
     };
   }
   setUserState = newUser => {
     this.setState({
       logged_in: true,
       user: newUser
-    });
-  };
-
-  setClickedOrder = orderId => {
-    this.setState({
-      clickedOrderId: orderId
     });
   };
 
@@ -46,6 +49,24 @@ class App extends Component {
         });
       });
   }
+  handleClickedOrder = orderId => {
+    fetch(`http://localhost:3000/api/orders/${orderId}`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          clickedOrderId: orderId,
+          orderOpen: !this.state.orderOpen,
+          clickedOrderListing_id: data.order.listing_id,
+          clickedOrderSender: data.order.sender,
+          clickedOrderStatus: data.order.status,
+          clickedOrderNameOnPack: data.order.name_on_pack,
+          clickedOrderETA: data.order.eta,
+          clickedOrderMeeting: data.order.meeting,
+          clickedOrderRating: data.order.rating,
+          clickedOrderCreated: data.order.created_at
+        })
+      );
+  };
 
   logOutUser = user => {
     localStorage.removeItem("user_id");
@@ -72,7 +93,7 @@ class App extends Component {
                 <Route exact path="/users/home">
                   <Home
                     userState={this.state}
-                    clickedOrderId={this.setClickedOrder}
+                    clickedOrder={this.handleClickedOrder}
                   />
                 </Route>
               )}
