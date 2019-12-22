@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import Orders from "./Orders";
 import "./style.css";
 
 export class OrdersContainer extends Component {
   constructor(props) {
     super();
     this.state = {
-      clickedOrderId: null
+      clickedOrderId: null,
+      showOrderDetails: false
     };
   }
 
-  handleClickedOrder(order_id) {
+  toggeleOrderInfo(order_id) {
     this.setState({
-      clickedOrderId: order_id
+      clickedOrderId: order_id,
+      showOrderDetails: !this.state.showOrderDetails
     });
   }
 
   render() {
     console.log("order container state: ", this.state);
+    const showOrderDetails = this.state.showOrderDetails;
     if (this.props.userState.userOrders) {
       return (
         <React.Fragment>
+          {showOrderDetails === true ? (
+            <div>
+              <h3>
+                showing order content
+                {this.state.clickedOrderId}
+              </h3>
+            </div>
+          ) : null}
+
           <div>
-            {this.clickedOrderId ? <Orders /> : null}
             <Table bordered hover responsive>
               <thead>
                 <tr>
@@ -40,7 +50,7 @@ export class OrdersContainer extends Component {
                   <tr
                     className="clickable-row"
                     key={i}
-                    onClick={() => this.handleClickedOrder(order.id)}
+                    onClick={() => this.toggeleOrderInfo(order.id)}
                   >
                     <td>{order.created_at.substr(0, 10)}</td>
                     <td>{order.sender}</td>
