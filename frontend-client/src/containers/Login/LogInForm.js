@@ -35,6 +35,19 @@ function LogInForm(props) {
           case 200:
             props.setUserState(data.user);
             localStorage.setItem("user_id", data.user.id);
+
+            fetch(`http://localhost:3000/api/users/${data.user.id}`)
+              .then(response => response.json())
+              .then(data =>
+                data.orders
+                  ? props.setUserOrderState(data.orders)
+                  : null.then(data =>
+                      data.listings
+                        ? props.setUserListingState(data.listings)
+                        : null
+                    )
+              );
+
             props.history.push("/users/home");
             break;
           case 404:
@@ -48,6 +61,17 @@ function LogInForm(props) {
       });
     setEmail("");
     setPassword("");
+
+    // localStorage.getItem("user_id") &&
+    //   fetch(
+    //     `http://localhost:3000/api/users/${localStorage.getItem("user_id")}`
+    //   )
+    //     .then(response => response.json())
+    //     .then(data =>
+    //       props
+    //         .setUserOrderState(data.user.orders)
+    //         .then(data => props.setUserListingState(data.user.listings))
+    //     );
   };
 
   return (

@@ -19,17 +19,7 @@ class App extends Component {
       logged_in: false,
       user: null,
       userOrders: null,
-      userListings: null,
-      clickedOrderId: null,
-      orderOpen: false,
-      clickedOrderListing_id: null,
-      clickedOrderSender: null,
-      clickedOrderStatus: null,
-      clickedOrderNameOnPack: null,
-      clickedOrderETA: null,
-      clickedOrderMeeting: null,
-      clickedOrderRating: null,
-      clickedOrderCreated: null
+      userListings: null
     };
   }
   setUserState = newUser => {
@@ -38,34 +28,15 @@ class App extends Component {
       user: newUser
     });
   };
-
-  componentDidMount() {
-    fetch(`http://localhost:3000/api/users/${localStorage.getItem("user_id")}`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          userOrders: data.orders,
-          userListings: data.listings
-        });
-      });
-  }
-  handleClickedOrder = orderId => {
-    fetch(`http://localhost:3000/api/orders/${orderId}`)
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          clickedOrderId: orderId,
-          orderOpen: !this.state.orderOpen,
-          clickedOrderListing_id: data.order.listing_id,
-          clickedOrderSender: data.order.sender,
-          clickedOrderStatus: data.order.status,
-          clickedOrderNameOnPack: data.order.name_on_pack,
-          clickedOrderETA: data.order.eta,
-          clickedOrderMeeting: data.order.meeting,
-          clickedOrderRating: data.order.rating,
-          clickedOrderCreated: data.order.created_at
-        })
-      );
+  setUserOrderState = newUserOrders => {
+    this.setState({
+      userOrders: newUserOrders
+    });
+  };
+  setUserListingState = newUserListings => {
+    this.setState({
+      userListings: newUserListings
+    });
   };
 
   logOutUser = user => {
@@ -87,14 +58,15 @@ class App extends Component {
               <Route exact path="/users/new" component={SignUpForm} />
               <Route exact path="/success" component={Success} />
               <Route exact path="/users/login">
-                <LogInForm setUserState={this.setUserState} />
+                <LogInForm
+                  setUserState={this.setUserState}
+                  setUserOrderState={this.setUserOrderState}
+                  setUserListingState={this.setUserOrderState}
+                />
               </Route>
               {this.state.logged_in && (
                 <Route exact path="/users/home">
-                  <Home
-                    userState={this.state}
-                    clickedOrder={this.handleClickedOrder}
-                  />
+                  <Home userState={this.state} />
                 </Route>
               )}
               <Route exact path="/logout" component={Logout} />

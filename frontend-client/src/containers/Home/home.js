@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { OrdersContainer } from "../Orders/OrdersContainer";
-import Orders from "../../components/Orders";
+import Orders from "../Orders/Orders";
 
 export class Home extends Component {
   render() {
@@ -33,10 +33,7 @@ export class Home extends Component {
           </Container>
         </div>
         <br></br>
-        <OrdersContainer
-          userState={this.props.userState}
-          clickedOrder={this.props.clickedOrder}
-        />
+        <OrdersContainer userState={this.props.userState} />
       </React.Fragment>
     );
   }
