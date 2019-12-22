@@ -35,6 +35,25 @@ function LogInForm(props) {
           case 200:
             props.setUserState(data.user);
             localStorage.setItem("user_id", data.user.id);
+
+            fetch(`http://localhost:3000/api/users/${data.user.id}`)
+              .then(response => response.json())
+              .then(data =>
+                data.orders ? props.setUserOrderState(data.orders) : null
+              );
+
+            fetch(`http://localhost:3000/api/users/${data.user.id}`)
+              .then(response => response.json())
+              .then(data =>
+                data.listings ? props.setUserListingState(data.listings) : null
+              );
+
+            fetch(`http://localhost:3000/api/users/${data.user.id}`)
+              .then(response => response.json())
+              .then(data =>
+                data.favorites ? props.setUserFavsState(data.favorites) : null
+              );
+
             props.history.push("/users/home");
             break;
           case 404:

@@ -1,5 +1,5 @@
 # USERS
-User.create(f_name: "Saul", l_name: "Feliz", address: "9304 Roxanna Dr Austin, TX 78748", balance: 100, rating: 4.9, pic_link: "https://randomuser.me/api/portraits/men/3.jpg", password: "123", email: "646634@gmail.com") 
+User.create(f_name: "Saul", l_name: "Feliz", address: "9304 Roxanna Dr Austin, TX 78748", balance: 100, rating: 4.9, pic_link: "https://randomuser.me/api/portraits/men/3.jpg", password: "123", email: "saul@gmail.com") 
 User.create(f_name: "James", l_name: "Smith", address: "115 Sandra Muraida Ln Austin, TX 78703", balance: 81, rating: 4.1, pic_link: "https://randomuser.me/api/portraits/men/4.jpg", password: "123", email: "james@gsmith.com")
 User.create(f_name: "Jason", l_name: "Helms", address: "403 Orchard St Austin, TX 78703", balance: 57, rating: 308, pic_link: "https://randomuser.me/api/portraits/men/5.jpg", password: "123", email: "jason@helms.com")
 User.create(f_name: "Rita", l_name: "Gibson", address: "621 Congress Ave Austin, TX 78701", balance: 97, rating: 5.0, pic_link: "https://randomuser.me/api/portraits/women/80.jpg", password: "123", email: "rita@gibson.com")
@@ -60,6 +60,12 @@ Comment.create(user_id: 1, listing_id: 1, text: "Only 3 days?")
 Comment.create(user_id: 2, listing_id: 1, text: "Sorry...I don't have that much space")
 Comment.create(user_id: 1, listing_id: 1, text: "OK...I'll pickup the next day.")
 Comment.create(user_id: 2, listing_id: 1, text: "Awesome! Thanks! :-)")
+
+#FAVORITES
+Favorite.create(user_id: 1, listing_id: 1)
+Favorite.create(user_id: 1, listing_id: 23)
+Favorite.create(user_id: 3, listing_id: 2)
+
 
 
 # ORDERS

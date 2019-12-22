@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'users/new', to: 'users#create'
     post 'users/new', to: 'users#create'
     get '/users/:id', to: 'users#show'
-
+    
     resources :listings
     resources :orders
     
@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     
     # resources :comments
     # resources :users
+    # resources :favorites
   end
 end

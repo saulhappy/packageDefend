@@ -3,10 +3,36 @@ import { Table } from "react-bootstrap";
 import "./style.css";
 
 export class OrdersContainer extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      clickedOrderId: null,
+      showOrderDetails: false
+    };
+  }
+
+  toggeleOrderInfo(order_id) {
+    this.setState({
+      clickedOrderId: order_id,
+      showOrderDetails: !this.state.showOrderDetails
+    });
+  }
+
   render() {
+    console.log("order container state: ", this.state);
+    const showOrderDetails = this.state.showOrderDetails;
     if (this.props.userState.userOrders) {
       return (
         <React.Fragment>
+          {showOrderDetails === true ? (
+            <div>
+              <h3>
+                showing order content
+                {this.state.clickedOrderId}
+              </h3>
+            </div>
+          ) : null}
+
           <div>
             <Table bordered hover responsive>
               <thead>
@@ -24,7 +50,7 @@ export class OrdersContainer extends Component {
                   <tr
                     className="clickable-row"
                     key={i}
-                    onClick={() => this.props.clickedOrder(order.id)}
+                    onClick={() => this.toggeleOrderInfo(order.id)}
                   >
                     <td>{order.created_at.substr(0, 10)}</td>
                     <td>{order.sender}</td>

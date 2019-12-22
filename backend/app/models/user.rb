@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :listings
     has_many :comments 
     has_many :orders
+    has_many :favorites
 
     has_secure_password
     

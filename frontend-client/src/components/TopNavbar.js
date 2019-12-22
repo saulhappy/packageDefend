@@ -9,12 +9,12 @@ export const TopNavbar = props => (
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
         <Nav.Link href="/about">About</Nav.Link>
-        {localStorage.getItem("user_id") || props.user ? (
+        {localStorage.getItem("user_id") ? (
           <Nav.Link href="/home">Your Activity</Nav.Link>
         ) : (
           <Nav.Link href="/users/new">Sign Up</Nav.Link>
         )}
-        {localStorage.getItem("user_id") || props.user ? (
+        {localStorage.getItem("user_id") ? (
           <Nav.Link onClick={props.logOutUser} href="/logout">
             Logout
           </Nav.Link>

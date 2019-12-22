@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def user_serializer
     {
       :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
-      :include => [:orders, :listings, :comments]}
+      :include => [:orders, :listings, :comments, :favorites]}
   end
 
   def user_params
