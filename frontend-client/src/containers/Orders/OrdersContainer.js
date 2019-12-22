@@ -7,37 +7,18 @@ export class OrdersContainer extends Component {
   constructor(props) {
     super();
     this.state = {
-      clickedOrderId: null,
-      clickedOrderListing_id: null,
-      clickedOrderSender: null,
-      clickedOrderStatus: null,
-      clickedOrderNameOnPack: null,
-      clickedOrderETA: null,
-      clickedOrderMeeting: null,
-      clickedOrderRating: null,
-      clickedOrderCreated: null
+      clickedOrderId: null
     };
   }
 
-  handleClickedOrder = orderId => {
-    fetch(`http://localhost:3000/api/orders/${orderId}`)
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          clickedOrderId: orderId,
-          clickedOrderListing_id: data.order.listing_id,
-          clickedOrderSender: data.order.sender,
-          clickedOrderStatus: data.order.status,
-          clickedOrderNameOnPack: data.order.name_on_pack,
-          clickedOrderETA: data.order.eta,
-          clickedOrderMeeting: data.order.meeting,
-          clickedOrderRating: data.order.rating,
-          clickedOrderCreated: data.order.created_at
-        })
-      );
-  };
+  handleClickedOrder(order_id) {
+    this.setState({
+      clickedOrderId: order_id
+    });
+  }
 
   render() {
+    console.log("order container state: ", this.state);
     if (this.props.userState.userOrders) {
       return (
         <React.Fragment>

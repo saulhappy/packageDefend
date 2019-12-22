@@ -19,7 +19,8 @@ class App extends Component {
       logged_in: false,
       user: null,
       userOrders: null,
-      userListings: null
+      userListings: null,
+      userFavs: null
     };
   }
   setUserState = newUser => {
@@ -36,6 +37,11 @@ class App extends Component {
   setUserListingState = newUserListings => {
     this.setState({
       userListings: newUserListings
+    });
+  };
+  setUserFavsState = newUserFavs => {
+    this.setState({
+      userFavs: newUserFavs
     });
   };
 
@@ -61,7 +67,8 @@ class App extends Component {
                 <LogInForm
                   setUserState={this.setUserState}
                   setUserOrderState={this.setUserOrderState}
-                  setUserListingState={this.setUserOrderState}
+                  setUserListingState={this.setUserListingState}
+                  setUserFavsState={this.setUserFavsState}
                 />
               </Route>
               {this.state.logged_in && (
