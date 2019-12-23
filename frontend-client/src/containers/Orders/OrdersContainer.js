@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Container, Row, Col } from "react-bootstrap";
 import "./style.css";
 
 export class OrdersContainer extends Component {
@@ -7,7 +7,15 @@ export class OrdersContainer extends Component {
     super();
     this.state = {
       clickedOrderId: null,
-      showOrderDetails: false
+      showOrderDetails: false,
+      orderDetailsOrderId: null,
+      orderDetailsListingId: null,
+      orderDetailsSender: null,
+      orderDetailsStatus: null,
+      orderDetailsNameOnPack: null,
+      orderDetailsEta: null,
+      orderDetailsMeeting: null,
+      orderDetailsRating: null
     };
   }
 
@@ -18,22 +26,77 @@ export class OrdersContainer extends Component {
     });
   }
 
+  fetchOrderDetails() {
+    fetch(`http://localhost:3000/api/orders/${this.state.clickedOrderId}`)
+      .then(response => response.json())
+      .then(data => this.setOrderDetails(data));
+  }
+
+  setOrderDetails(data) {
+    this.setState({
+      orderDetailsOrderId: data.order.id,
+      orderDetailsListingId: data.order.listing_id,
+      orderDetailsSender: data.order.sender,
+      orderDetailsStatus: data.order.status,
+      orderDetailsNameOnPack: data.order.name_on_pack,
+      orderDetailsEta: data.order.eta,
+      orderDetailsMeeting: data.order.meeting,
+      orderDetailsRating: data.order.rating,
+      clickedOrderId: null
+    });
+  }
+
   render() {
     console.log("order container state: ", this.state);
+    console.log("order container props: ", this.props);
+    this.state.clickedOrderId && this.fetchOrderDetails();
     const showOrderDetails = this.state.showOrderDetails;
     if (this.props.userState.userOrders) {
       return (
         <React.Fragment>
           {showOrderDetails === true ? (
             <div>
-              <h3>
-                showing order content
-                {this.state.clickedOrderId}
-              </h3>
+              <Container>
+                <Row className="justify-content-md-center">
+                  <strong>
+                    <Col md="auto">Order Detials</Col>
+                  </strong>
+                </Row>
+                <br></br>
+                <Row>
+                  <Col>
+                    Listing No:{" "}
+                    <a href="/">{this.state.orderDetailsListingId}</a>
+                  </Col>
+                  <Col xs lg="3">
+                    Package From: {this.state.orderDetailsSender}
+                  </Col>
+                  <Col xs lg="3">
+                    Package For: {this.state.orderDetailsNameOnPack}
+                  </Col>
+                  <Col xs lg="3">
+                    Order Status: {this.state.orderDetailsStatus}
+                  </Col>
+                  <Col xs lg="3">
+                    Package ETA: {this.state.orderDetailsEta}
+                  </Col>
+                  <Col xs lg="3">
+                    Order Rating: {this.state.orderDetailsRating}
+                  </Col>
+                </Row>
+                <br></br>
+                <Row>
+                  <Col xs lg="4">
+                    Package Pickup Date: {this.state.orderDetailsMeeting}
+                  </Col>
+                </Row>
+              </Container>
             </div>
           ) : null}
 
           <div>
+            <br></br>
+            <br></br>
             <Table bordered hover responsive>
               <thead>
                 <tr>
