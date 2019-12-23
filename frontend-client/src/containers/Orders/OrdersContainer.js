@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table, Container, Row, Col } from "react-bootstrap";
 import "./style.css";
+import RatingModal from "../../components/RatingModal";
+import { Link } from "react-router-dom";
 
 export class OrdersContainer extends Component {
   constructor(props) {
@@ -15,16 +17,23 @@ export class OrdersContainer extends Component {
       orderDetailsNameOnPack: null,
       orderDetailsEta: null,
       orderDetailsMeeting: null,
-      orderDetailsRating: null
+      orderDetailsRating: null,
+      showRatingModal: false
     };
   }
 
-  toggeleOrderInfo(order_id) {
+  toggleOrderInfo(order_id) {
     this.setState({
       clickedOrderId: order_id,
       showOrderDetails: !this.state.showOrderDetails
     });
   }
+
+  toggleShowRatingModal = () => {
+    this.setState({
+      showRatingModal: !this.state.showRatingModal
+    });
+  };
 
   fetchOrderDetails() {
     fetch(`http://localhost:3000/api/orders/${this.state.clickedOrderId}`)
@@ -46,14 +55,24 @@ export class OrdersContainer extends Component {
     });
   }
 
+  handleRatingPost(Rating) {
+    console.log("posting a new rating", Rating);
+  }
+
   render() {
     console.log("order container state: ", this.state);
     console.log("order container props: ", this.props);
     this.state.clickedOrderId && this.fetchOrderDetails();
     const showOrderDetails = this.state.showOrderDetails;
+
     if (this.props.userState.userOrders) {
       return (
         <React.Fragment>
+          <RatingModal
+            showRatingModal={this.state.showRatingModal}
+            toggleShowRatingModal={this.toggleShowRatingModal}
+            handleRatingPost={this.handleRatingPost}
+          ></RatingModal>
           {showOrderDetails === true ? (
             <div>
               <Container>
@@ -81,7 +100,10 @@ export class OrdersContainer extends Component {
                     Package ETA: {this.state.orderDetailsEta}
                   </Col>
                   <Col xs lg="3">
-                    Order Rating: {this.state.orderDetailsRating}
+                    <Link onClick={this.toggleShowRatingModal}>
+                      Order Rating: {this.state.orderDetailsRating}
+                      {this.state.showRatingModal}
+                    </Link>
                   </Col>
                 </Row>
                 <br></br>
@@ -113,7 +135,7 @@ export class OrdersContainer extends Component {
                   <tr
                     className="clickable-row"
                     key={i}
-                    onClick={() => this.toggeleOrderInfo(order.id)}
+                    onClick={() => this.toggleOrderInfo(order.id)}
                   >
                     <td>{order.created_at.substr(0, 10)}</td>
                     <td>{order.sender}</td>
