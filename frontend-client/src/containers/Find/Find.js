@@ -38,9 +38,7 @@ function Find(props) {
     <div>
       <ReactMapGl
         {...viewport}
-        mapboxApiAccessToken={
-          "pk.eyJ1Ijoic2F1bGhhcHB5IiwiYSI6ImNrNG15OGV4YzA0MzMzanBiOHJsMWJ6N24ifQ.nTUuXzPsstEFrfWtH7XnaA"
-        }
+        mapboxApiAccessToken={"123"}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
