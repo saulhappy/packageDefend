@@ -7,7 +7,7 @@ export class Home extends Component {
     return (
       <React.Fragment>
         <div>
-          <h3>{`${this.props.userState.user.f_name}'s`} Home </h3>
+          <h3>{`${this.props.userState.user.f_name}'s`} Dashboard </h3>
           <p>Your balance: {`${this.props.userState.user.balance}`}</p>
           <br></br>
           <Container>

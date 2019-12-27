@@ -1,6 +1,6 @@
 import { withRouter, Link } from "react-router-dom";
 import React, { Component } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Col, Button, Container, Row } from "react-bootstrap";
 import "./style.css";
 
 const formValid = ({ formErrors, ...rest }) => {
@@ -70,7 +70,10 @@ class OrderForm extends Component {
         sender: this.state.sender,
         nameOnPack: this.state.nameOnPack,
         eta: this.state.eta,
-        meeting: this.state.meeting
+        meeting: this.state.meeting,
+        listing_id: this.props.appState.clickedDefenderListing.id,
+        user_id: this.props.appState.user.id,
+        rating: null
       };
 
       const configObject = {
@@ -97,7 +100,7 @@ class OrderForm extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log("from order form", this.props);
     const { formErrors } = this.state;
 
     return (
@@ -106,10 +109,70 @@ class OrderForm extends Component {
         <br></br>
         <br></br>
         <Form onSubmit={this.handleSubmit}>
-          <h2>Ask [INTERPOLATE NAME] To Defend Your Package!</h2>
+          <h3>
+            Ask {`${this.props.appState.clickedDefenderListing.user.f_name}`} To
+            Defend Your Package!
+          </h3>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <Container>
+            <Row>
+              <Col md={1}>
+                {" "}
+                <img
+                  src={this.props.appState.clickedDefenderListing.user.pic_link}
+                  alt=""
+                ></img>
+              </Col>
+              <Col md={{ span: 3, offset: 2 }}>
+                {" "}
+                <h5>
+                  {`${this.props.appState.clickedDefenderListing.user.f_name}'s`}{" "}
+                  rating:{" "}
+                  {`${this.props.appState.clickedDefenderListing.user.rating}`}
+                </h5>{" "}
+              </Col>
+            </Row>
+            <Row>
+              <Col md={{ span: 6, offset: 3 }}>
+                <strong>Address: </strong>
+                {`${this.props.appState.clickedDefenderListing.user.address}`}
+              </Col>
+            </Row>
+            <br></br>
+            <Row>
+              <Col md={{ span: 3, offset: 3 }}>
+                <strong>Price per Package: </strong>
+                {`$${this.props.appState.clickedDefenderListing.price}`}
+              </Col>
+            </Row>
+            <br></br>
+            <Row>
+              <Col md={{ span: 6, offset: 3 }}>
+                <strong>
+                  No. of days I'll give you to pick up your package:{" "}
+                </strong>
+                {`${this.props.appState.clickedDefenderListing.max_hold}`}
+              </Col>
+            </Row>
+            <br></br>
+            <Row>
+              <Col md={{ span: 3, offset: 3 }}>
+                <strong>Email me at: </strong>
+                {`${this.props.appState.clickedDefenderListing.user.email}`}
+              </Col>
+            </Row>
+          </Container>
+
+          <br></br>
+          <br></br>
+          <br></br>
+
           <Form.Row>
             <Form.Group as={Col}>
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>Sender</Form.Label>
               <Form.Control
                 className={
                   formErrors.sender.length > 0
@@ -143,7 +206,9 @@ class OrderForm extends Component {
                 </span>
               )}
             </Form.Group>
-            <Form.Group as={Col} controlId="formGridEmail">
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col}>
               <Form.Label>Est. Delivery</Form.Label>
               <Form.Control
                 name="eta"
@@ -151,27 +216,28 @@ class OrderForm extends Component {
                 placeholder="DD/MM/YYYY"
                 onChange={this.handleChange}
               />
-              {formErrors.email.length > 0 && (
+              {formErrors.eta.length > 0 && (
                 <span className="signup-create-errorMessage">
                   {formErrors.eta}
                 </span>
               )}
             </Form.Group>
+            <Form.Group as={Col}>
+              <Form.Label>Est. Meeting</Form.Label>
+              <Form.Control
+                name="meeting"
+                type="date"
+                placeholder="DD/MM/YYYY - guesstimate is fine!"
+                onChange={this.handleChange}
+              />
+              {formErrors.meeting.length > 0 && (
+                <span className="signup-create-errorMessage">
+                  {formErrors.meeting}
+                </span>
+              )}
+            </Form.Group>
           </Form.Row>
-          <Form.Group controlId="formGridAddress1">
-            <Form.Label>Est. Meeting</Form.Label>
-            <Form.Control
-              name="meeting"
-              type="date"
-              placeholder="DD/MM/YYYY"
-              onChange={this.handleChange}
-            />
-            {formErrors.address.length > 0 && (
-              <span className="signup-create-errorMessage">
-                {formErrors.meeting}
-              </span>
-            )}
-          </Form.Group>
+
           <Button bg="dark" variant="dark" type="submit">
             Defend my package!
           </Button>
