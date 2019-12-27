@@ -51,12 +51,12 @@ class UsersController < ApplicationController
 
   def user_serializer
     {
-      :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link],
+      :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link, :lat, :long],
       :include => [:orders, :listings, :comments, :favorites]}
   end
 
   def user_params
-    params.require(:user).permit(:f_name, :l_name, :email, :address, :balance, :rating, :pic_link, :password, :password_confirmation)
+    params.require(:user).permit(:f_name, :l_name, :email, :address, :balance, :rating, :pic_link, :password, :password_confirmation, :lat, :long)
   end
 
 end

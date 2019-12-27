@@ -54,6 +54,10 @@ function LogInForm(props) {
                 data.favorites ? props.setUserFavsState(data.favorites) : null
               );
 
+            fetch(`http://localhost:3000/api/listings`)
+              .then(response => response.json())
+              .then(data => props.setAllListings(data));
+
             props.history.push("/users/home");
             break;
           case 404:

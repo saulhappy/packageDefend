@@ -11,6 +11,8 @@ import { NotFound } from "./containers/NotFound";
 import { Layout } from "./components/Layout";
 import { TopNavbar } from "./components/TopNavbar";
 import { Jumbotron } from "./components/Jumbotron";
+import Find from "./containers/Find/Find";
+import OrderForm from "./containers/Orders/OrderForm";
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +22,9 @@ class App extends Component {
       user: null,
       userOrders: null,
       userListings: null,
-      userFavs: null
+      userFavs: null,
+      allListings: null,
+      clickedDefenderListing: null
     };
   }
   setUserState = newUser => {
@@ -49,9 +53,20 @@ class App extends Component {
     localStorage.removeItem("user_id");
   };
 
+  setClickedDefenderListing = listing => {
+    this.setState({
+      clickedDefenderListing: listing
+    });
+  };
+
+  setAllListings = data => {
+    this.setState({
+      allListings: data
+    });
+  };
+
   render() {
     console.log("app's state: ", this.state);
-
     return (
       <React.Fragment>
         <Router>
@@ -69,6 +84,7 @@ class App extends Component {
                   setUserOrderState={this.setUserOrderState}
                   setUserListingState={this.setUserListingState}
                   setUserFavsState={this.setUserFavsState}
+                  setAllListings={this.setAllListings}
                 />
               </Route>
               {this.state.logged_in && (
@@ -76,6 +92,19 @@ class App extends Component {
                   <Home userState={this.state} />
                 </Route>
               )}
+              {this.state.logged_in && (
+                <Route exact path="/find">
+                  <Find
+                    allListings={this.state.allListings}
+                    setClickedDefenderListing={this.setClickedDefenderListing}
+                  />
+                </Route>
+              )}
+
+              <Route exact path="/order">
+                <OrderForm appState={this.state} />
+              </Route>
+
               <Route exact path="/logout" component={Logout} />
               <Route component={NotFound} />
             </Switch>

@@ -36,7 +36,7 @@ export class OrdersContainer extends Component {
   };
 
   fetchOrderDetails() {
-    fetch(`http://localhost:3000/api/orders/${this.state.clickedOrderId}`)
+    fetch(`http://localhost:3000/api/orders/3`)
       .then(response => response.json())
       .then(data => this.setOrderDetails(data));
   }
@@ -57,13 +57,24 @@ export class OrdersContainer extends Component {
 
   handleRatingPost(Rating) {
     console.log("posting a new rating", Rating);
+
+    fetch(`http://localhost:3000/api/orders/${this.state.clickedOrderId}`, {
+      method: "PATCH",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rating: Rating })
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => error);
   }
 
   render() {
-    console.log("order container state: ", this.state);
-    console.log("order container props: ", this.props);
     this.state.clickedOrderId && this.fetchOrderDetails();
     const showOrderDetails = this.state.showOrderDetails;
+
+    console.log("order container state 2: ", this.state);
+    console.log("order container props 2: ", this.props);
 
     if (this.props.userState.userOrders) {
       return (
@@ -72,6 +83,7 @@ export class OrdersContainer extends Component {
             showRatingModal={this.state.showRatingModal}
             toggleShowRatingModal={this.toggleShowRatingModal}
             handleRatingPost={this.handleRatingPost}
+            orderDetailsOrderId={this.orderDetailsOrderId}
           ></RatingModal>
           {showOrderDetails === true ? (
             <div>
