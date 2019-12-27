@@ -90,7 +90,7 @@ class OrderForm extends Component {
           response.json().then(data => {
             console.log(data);
             data.status === 200
-              ? this.props.history.push("/new_order_submit")
+              ? this.props.history.push("orders/success")
               : this.props.history.push("/new_order_error");
           })
       );
