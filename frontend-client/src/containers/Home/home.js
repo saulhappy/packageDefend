@@ -36,14 +36,15 @@ export class Home extends Component {
             <br></br>
             <Row>
               <Col>
-                {" "}
-                <Button variant="secondary" size="lg">
-                  {" "}
-                  Packages Defended{" "}
-                  <span role="img" aria-label="package">
-                    📦
-                  </span>
-                </Button>
+                <Link to="/orders/history">
+                  <Button variant="secondary" size="lg">
+                    {" "}
+                    Packages Defended{" "}
+                    <span role="img" aria-label="package">
+                      📦
+                    </span>
+                  </Button>
+                </Link>
               </Col>
               <Col>
                 {" "}

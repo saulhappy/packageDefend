@@ -4,6 +4,7 @@ import { Landing } from "./containers/Landing";
 import { About } from "./containers/About";
 import SignUpForm from "./containers/Signup/SignUpForm";
 import Success from "./containers/Signup/success";
+import OrderSuccess from "./containers/Orders/OrderSuccess";
 import LogInForm from "./containers/Login/LogInForm";
 import { Home } from "./containers/Home/home";
 import Logout from "./containers/Logout";
@@ -13,6 +14,7 @@ import { TopNavbar } from "./components/TopNavbar";
 import { Jumbotron } from "./components/Jumbotron";
 import Find from "./containers/Find/Find";
 import OrderForm from "./containers/Orders/OrderForm";
+import OrderHistory from "./containers/Orders/OrderHistory";
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +26,8 @@ class App extends Component {
       userListings: null,
       userFavs: null,
       allListings: null,
-      clickedDefenderListing: null
+      clickedDefenderListing: null,
+      clickedOrder: null
     };
   }
   setUserState = newUser => {
@@ -59,6 +62,12 @@ class App extends Component {
     });
   };
 
+  setClickedOrder = order_id => {
+    this.setState({
+      clickedOrder: order_id
+    });
+  };
+
   setAllListings = data => {
     this.setState({
       allListings: data
@@ -78,6 +87,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route exact path="/users/new" component={SignUpForm} />
               <Route exact path="/success" component={Success} />
+              <Route exact path="orders/success" component={OrderSuccess} />
               <Route exact path="/users/login">
                 <LogInForm
                   setUserState={this.setUserState}
@@ -90,6 +100,14 @@ class App extends Component {
               {this.state.logged_in && (
                 <Route exact path="/users/home">
                   <Home userState={this.state} />
+                </Route>
+              )}
+              {this.state.logged_in && (
+                <Route exact path="/orders/history">
+                  <OrderHistory
+                    userOrders={this.state.userOrders}
+                    setClickedOrder={this.setClickedOrder}
+                  />
                 </Route>
               )}
               {this.state.logged_in && (

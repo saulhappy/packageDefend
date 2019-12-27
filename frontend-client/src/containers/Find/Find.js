@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
 import { Button } from "react-bootstrap";
 import "./style.css";
@@ -36,6 +36,9 @@ function Find(props) {
   console.log("from find: ", props);
   return (
     <div>
+      <div>
+        <Link to="/users/home">Return to Your Dashboard</Link>
+      </div>
       <ReactMapGl
         {...viewport}
         mapboxApiAccessToken={

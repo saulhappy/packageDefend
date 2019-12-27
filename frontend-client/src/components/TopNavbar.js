@@ -10,7 +10,7 @@ export const TopNavbar = props => (
       <Nav className="ml-auto">
         <Nav.Link href="/about">About</Nav.Link>
         {localStorage.getItem("user_id") ? (
-          <Nav.Link href="/home">Your Dashboard</Nav.Link>
+          <Nav.Link href="/users/home">Your Dashboard</Nav.Link>
         ) : (
           <Nav.Link href="/users/new">Sign Up</Nav.Link>
         )}
