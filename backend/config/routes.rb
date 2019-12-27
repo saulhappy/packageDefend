@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
     
     resources :listings
+    get 'listings', to: 'listings#index'
     resources :orders
     
     resources :sessions, only: [:new, :create, :destroy]

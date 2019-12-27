@@ -1,0 +1,7 @@
+.marker {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVza4FyX37Rh0HGBQm5zKXrlEXd2DjaKY_Uq8YhWiYECJw5UTz&s");
+  background-size: cover;
+  width: 90px;
+  height: 60px;
+  cursor: pointer;
+}

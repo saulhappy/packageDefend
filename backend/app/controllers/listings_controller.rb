@@ -1,10 +1,9 @@
 class ListingsController < ApplicationController
+
     def index
-        listings = Listing.all
-        render json: {
-          listings: listings
-        }
-      end
+      listings = Listing.all
+        render json: listings.to_json(listing_serializer)
+    end
 
     def show
         listing = params[:id]
@@ -13,6 +12,17 @@ class ListingsController < ApplicationController
             listing: listing
           }
     end
+
+
+
+  private
+
+  def listing_serializer
+    {
+      :only => [:id, :price, :max_hold, :created_at, :updated_at],
+      :include => [:user]
+    }
+  end
 
   def listing_params
     params.require(:listing).permit(:price, :max_hold, :created_at, :updated_at)
