@@ -19,11 +19,11 @@ class OrdersController < ApplicationController
       listing_id = params["listing_id"]
       user_id = params["user_id"]
       sender = params["sender"]
-      status = params["status"]
-      name_on_pack = params["name_on_pack"]
+      status = "new"
+      name_on_pack = params["nameOnPack"]
       eta = params["eta"]
       meeting = params["meeting"]
-      rating = params["rating"]
+      rating = nil
 
       order = Order.new(
         listing_id = listing_id,
@@ -42,8 +42,8 @@ class OrdersController < ApplicationController
           }
         else
           render json: {
-            status: 500,
-            errors: "Error creating user"
+            status: 404,
+            errors: "Error creating new order"
           }
         end
     end
@@ -67,6 +67,6 @@ class OrdersController < ApplicationController
 
 
   def order_params
-    params.permit(:id, :listing_id, :user_id, :sender, :status, :name_on_pack, :eta, :meeting, :rating, :created_at)
+    params.permit(:listing_id, :user_id, :sender, :status, :name_on_pack, :eta, :meeting, :rating)
   end
 end

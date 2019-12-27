@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :listings
     get 'listings', to: 'listings#index'
     resources :orders
+    post 'orders/new', to: 'orders#create'
     
     resources :sessions, only: [:new, :create, :destroy]
     get "/login", to: "sessions#new", as: "login"
