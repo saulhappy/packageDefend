@@ -24,6 +24,8 @@ export class OrderEdit extends Component {
     e.preventDefault();
 
     let orderEdit = {
+      listing_id: this.props.appState.orderBeingEditListingID,
+      user_id: this.props.appState.user.id,
       sender: this.state.sender
         ? this.state.sender
         : this.props.appState.orderBeingEdit.sender,
@@ -43,9 +45,10 @@ export class OrderEdit extends Component {
         ? this.state.rating
         : this.props.appState.orderBeingEdit.rating
     };
+    console.log(orderEdit);
 
     fetch(
-      `http://localhost:3000/api/orders/edit/${this.props.appState.orderBeingEdit.id}`,
+      `http://localhost:3000/api/orders/update/${this.props.appState.orderBeingEdit.id}`,
       {
         method: "PATCH",
         headers: {
@@ -203,6 +206,7 @@ export class OrderEdit extends Component {
                 as="select"
                 onChange={this.handleChange}
               >
+                <option></option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
