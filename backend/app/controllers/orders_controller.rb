@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
     end
 
     def update
+      # sytnax: order.update(field: "value")
       order = Order.find(params[:id])
       order.update(order_params)
       render json: {

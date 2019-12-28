@@ -1,6 +1,7 @@
 import { withRouter, Link } from "react-router-dom";
 import React, { Component } from "react";
 import { Form, Col, Button, Container, Row } from "react-bootstrap";
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./style.css";
 
 const formValid = ({ formErrors, ...rest }) => {

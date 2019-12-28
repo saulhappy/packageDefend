@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Landing } from "./containers/Landing";
-import { About } from "./containers/About";
+import { Landing } from "./containers/Landing/Landing";
+import { About } from "./containers/About/About";
 import SignUpForm from "./containers/Signup/SignUpForm";
 import Success from "./containers/Signup/success";
 import OrderSuccess from "./containers/Orders/OrderSuccess";
 import LogInForm from "./containers/Login/LogInForm";
 import { Home } from "./containers/Home/home";
-import Logout from "./containers/Logout";
-import { NotFound } from "./containers/NotFound";
+import Logout from "./containers/Logout/Logout";
+import { NotFound } from "./containers/NotFound/NotFound";
 import { Layout } from "./components/Layout";
 import { TopNavbar } from "./components/TopNavbar";
 import { Jumbotron } from "./components/Jumbotron";
@@ -17,6 +17,9 @@ import OrderForm from "./containers/Orders/OrderForm";
 import OrderHistory from "./containers/Orders/OrderHistory";
 import OrderEdit from "./containers/Orders/OrderEdit";
 import OrderUpdated from "./containers/Orders/OrderUpdated";
+import UserUpdated from "./containers/Users/UserUpdated";
+import User from "./containers/Users/User";
+import UserEdit from "./containers/Users/UserEdit";
 
 class App extends Component {
   constructor(props) {
@@ -115,6 +118,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route exact path="/users/new" component={SignUpForm} />
               <Route exact path="/order/updated" component={OrderUpdated} />
+              <Route exact path="/user/updated" component={UserUpdated} />
               <Route exact path="/success" component={Success} />
               <Route exact path="/orders/success" component={OrderSuccess} />
               <Route exact path="/users/login">
@@ -145,11 +149,21 @@ class App extends Component {
                 </Route>
               )}
               {this.state.logged_in && (
+                <Route exact path="/user/account/edit">
+                  <UserEdit />
+                </Route>
+              )}
+              {this.state.logged_in && (
                 <Route exact path="/find">
                   <Find
                     allListings={this.state.allListings}
                     setClickedDefenderListing={this.setClickedDefenderListing}
                   />
+                </Route>
+              )}
+              {this.state.logged_in && (
+                <Route exact path="/user/account">
+                  <User appState={this.state} />
                 </Route>
               )}
 
