@@ -48,10 +48,12 @@ export class Home extends Component {
               </Col>
               <Col>
                 {" "}
-                <Button variant="secondary" size="lg">
-                  {" "}
-                  Your Account{" "}
-                </Button>
+                <Link to="/user/account">
+                  <Button variant="secondary" size="lg">
+                    {" "}
+                    Your Account{" "}
+                  </Button>
+                </Link>
               </Col>
             </Row>
           </Container>

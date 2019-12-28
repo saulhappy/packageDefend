@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'users/new', to: 'users#create'
     post 'users/new', to: 'users#create'
     get '/users/:id', to: 'users#show'
+    patch 'users/update/:id', to: 'users#update'
     
     resources :listings
     get 'listings', to: 'listings#index'
