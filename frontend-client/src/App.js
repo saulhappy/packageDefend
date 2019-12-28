@@ -15,6 +15,7 @@ import { Jumbotron } from "./components/Jumbotron";
 import Find from "./containers/Find/Find";
 import OrderForm from "./containers/Orders/OrderForm";
 import OrderHistory from "./containers/Orders/OrderHistory";
+import OrderEdit from "./containers/Orders/OrderEdit";
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,10 @@ class App extends Component {
       userFavs: null,
       allListings: null,
       clickedDefenderListing: null,
-      clickedOrder: null
+      clickedOrder: null,
+      orderBeingEdit: null,
+      orderBeingEditListingID: null,
+      orderBeingEditListing: null
     };
   }
   setUserState = newUser => {
@@ -66,6 +70,7 @@ class App extends Component {
     this.setState({
       clickedOrder: order_id
     });
+    this.setOrderBeingEdit(order_id);
   };
 
   setAllListings = data => {
@@ -73,6 +78,28 @@ class App extends Component {
       allListings: data
     });
   };
+
+  setOrderBeingEdit(order_id) {
+    this.state.userOrders.forEach(order => {
+      if (order.id === order_id) {
+        this.setState({
+          orderBeingEdit: order,
+          orderBeingEditListingID: order.listing_id
+        });
+        this.setOrderBeingEditListing(order.listing_id);
+      }
+    });
+  }
+
+  setOrderBeingEditListing(listing_id) {
+    this.state.allListings.forEach(listing => {
+      if (listing.id === listing_id) {
+        this.setState({
+          orderBeingEditListing: listing
+        });
+      }
+    });
+  }
 
   render() {
     console.log("app's state: ", this.state);
@@ -108,6 +135,11 @@ class App extends Component {
                     userOrders={this.state.userOrders}
                     setClickedOrder={this.setClickedOrder}
                   />
+                </Route>
+              )}
+              {this.state.logged_in && (
+                <Route exact path="/order/edit">
+                  <OrderEdit appState={this.state} />
                 </Route>
               )}
               {this.state.logged_in && (

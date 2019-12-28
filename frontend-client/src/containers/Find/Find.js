@@ -32,8 +32,6 @@ function Find(props) {
     props.setClickedDefenderListing(listing);
     props.history.push("/order");
   };
-
-  console.log("from find: ", props);
   return (
     <div>
       <div>
