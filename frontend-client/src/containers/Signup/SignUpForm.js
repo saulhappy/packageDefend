@@ -107,7 +107,6 @@ class SignupForm extends Component {
 
   render() {
     const { formErrors } = this.state;
-
     return (
       <React.Fragment>
         <Form onSubmit={this.handleSubmit}>

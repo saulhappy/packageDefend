@@ -51,22 +51,14 @@ class OrdersController < ApplicationController
     def update
       order = Order.find(params[:id])
       order.update(order_params)
-
-        puts "================================="
-        puts " puts of params :id"
-        puts params[:id]
-        puts "================================="
-        puts " puts of order_params"
-        puts (order_params)
-        puts "================================="
-        puts " puts of param :rating"
-        puts params[:rating]
-        puts [:rating]
-        puts "================================="
+      render json: {
+        status: 204,
+        message: "order updated"
+      }
   end
 
 
   def order_params
-    params.permit(:listing_id, :user_id, :sender, :status, :name_on_pack, :eta, :meeting, :rating)
+    params.permit(:id, :listing_id, :user_id, :sender, :status, :name_on_pack, :eta, :meeting, :rating)
   end
 end
