@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
 
     def update
       order = Order.find(params[:id])
-      order.update(:rating => params[:rating])
+      order.update(order_params)
 
         puts "================================="
         puts " puts of params :id"
