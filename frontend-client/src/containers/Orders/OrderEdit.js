@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Table, Form, Col, Button } from "react-bootstrap";
+import { withRouter } from "react-router";
 
 export class OrderEdit extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export class OrderEdit extends Component {
       sender: this.state.sender
         ? this.state.sender
         : this.props.appState.orderBeingEdit.sender,
-      nameOnPack: this.state.nameOnPack
+      name_on_pack: this.state.nameOnPack
         ? this.state.nameOnPack
         : this.props.appState.orderBeingEdit.name_on_pack,
       status: this.state.status
@@ -47,26 +48,29 @@ export class OrderEdit extends Component {
     };
     console.log(orderEdit);
 
+    const configObject = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(orderEdit)
+    };
+
     fetch(
       `http://localhost:3000/api/orders/update/${this.props.appState.orderBeingEdit.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          orderEdit
-        })
-      }
+      configObject
     )
       .then(resp => resp.json())
       .then(data => {
         console.log(data);
-      });
+        data.status === 204 && this.props.history.push("/order/updated");
+      })
+      .catch(error => console.log("api errors:", error));
   };
 
   render() {
+    console.log("from order edit props", this.props);
     const {
       id,
       sender,
@@ -227,4 +231,4 @@ export class OrderEdit extends Component {
   }
 }
 
-export default OrderEdit;
+export default withRouter(OrderEdit);

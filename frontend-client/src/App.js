@@ -16,6 +16,7 @@ import Find from "./containers/Find/Find";
 import OrderForm from "./containers/Orders/OrderForm";
 import OrderHistory from "./containers/Orders/OrderHistory";
 import OrderEdit from "./containers/Orders/OrderEdit";
+import OrderUpdated from "./containers/Orders/OrderUpdated";
 
 class App extends Component {
   constructor(props) {
@@ -113,8 +114,9 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/about" component={About} />
               <Route exact path="/users/new" component={SignUpForm} />
+              <Route exact path="/order/updated" component={OrderUpdated} />
               <Route exact path="/success" component={Success} />
-              <Route exact path="orders/success" component={OrderSuccess} />
+              <Route exact path="/orders/success" component={OrderSuccess} />
               <Route exact path="/users/login">
                 <LogInForm
                   setUserState={this.setUserState}
