@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'listings', to: 'listings#index'
     resources :orders
     post 'orders/new', to: 'orders#create'
+    patch 'orders/:id', to: 'orders#update'
     
     resources :sessions, only: [:new, :create, :destroy]
     get "/login", to: "sessions#new", as: "login"

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
 export class OrderHistory extends Component {
+  sendClickedOrder = order_id => {
+    this.props.setClickedOrder(order_id);
+    this.props.history.push("/order/edit");
+  };
   render() {
-    console.log(this.props);
-
     if (this.props.userOrders.length > 0) {
       return (
         <div>
@@ -33,7 +35,7 @@ export class OrderHistory extends Component {
                 <tr
                   className="clickable-row"
                   key={order.id}
-                  onClick={() => this.props.setClickedOrder(order.id)}
+                  onClick={() => this.sendClickedOrder(order.id)}
                 >
                   <td>{order.created_at.substr(0, 10)}</td>
                   <td>{order.sender}</td>
@@ -64,4 +66,4 @@ export class OrderHistory extends Component {
   }
 }
 
-export default OrderHistory;
+export default withRouter(OrderHistory);
