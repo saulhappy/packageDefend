@@ -105,6 +105,21 @@ class App extends Component {
     });
   }
 
+  updateUserOrdersState = updatedOrder => {
+    this.state.userOrders.forEach(order => {
+      if (order.id === updatedOrder.id) {
+        this.setState({
+          userOrders: this.state.userOrders.filter(
+            order => order.id !== updatedOrder.id
+          )
+        });
+        this.setState({
+          userOrders: [...this.state.userOrders, updatedOrder]
+        });
+      }
+    });
+  };
+
   render() {
     console.log("app's state: ", this.state);
     return (
@@ -145,7 +160,10 @@ class App extends Component {
               )}
               {this.state.logged_in && (
                 <Route exact path="/order/edit">
-                  <OrderEdit appState={this.state} />
+                  <OrderEdit
+                    appState={this.state}
+                    updateUserOrdersState={this.updateUserOrdersState}
+                  />
                 </Route>
               )}
               {this.state.logged_in && (

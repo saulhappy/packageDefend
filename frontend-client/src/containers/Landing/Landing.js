@@ -1,52 +1,70 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import SignUpForm from "../Signup/SignUpForm";
 import { Stats } from "../../components/Stats";
 
 export class Landing extends Component {
   render() {
     return (
       <React.Fragment>
-        <Stats />
         <div>
-          <h2>Porch Pirates Are a Growing Problem. Help has arrived.</h2>
-          <p>
-            <img
-              src="https://mynorthwest.com/wp-content/uploads/2019/08/package-thieves.jpg"
-              alt=""
-            ></img>
-          </p>
-          <h1>WILL ADD HOW IT WORKS SECTIONS HERE</h1>
-          <p>
-            Meow meow, i tell my human purr for no reason but chase after silly
-            colored fish toys around the house thinking longingly about tuna
-            brine hack, but where is my slave? I'm getting hungry. Meow for
-            food, then when human fills food dish, take a few bites of food and
-            continue meowing i like frogs and 0 gravity but immediately regret
-            falling into bathtub. Brown cats with pink ears i shredded your
-            linens for you wake up wander around the house making large amounts
-            of noise jump on top of your human's bed and fall asleep again
-            kitten is playing with dead mouse or destroy house in 5 seconds.
-            Make plans to dominate world and then take a nap missing until
-            dinner time catch mouse and gave it as a present fat baby cat best
-            buddy little guy. Meow leave hair everywhere. Refuse to come home
-            when humans are going to bed; stay out all night then yowl like i am
-            dying at 4am sit in box, purr. Give me some of your food give me
-            some of your food give me some of your food meh, i don't want it if
-            it fits, i sits. Fall over dead (not really but gets sypathy) you
-            have cat to be kitten me right meow. Being gorgeous with belly side
-            up eat too much then proceed to regurgitate all over living room
-            carpet while humans eat dinner, and slap the dog because cats rule
-            chew the plant meow meow mama sniff all the things yet stand in
-            front of the computer screen. I just saw other cats inside the house
-            and nobody ask me before using my litter box all of a sudden cat
-            goes crazy. Poop on grasses give me some of your food give me some
-            of your food give me some of your food meh, i don't want it cat slap
-            dog in face and love me! chew the plant chase dog then run away
-            ptracy.
-          </p>
+          <div>
+            <h1 className="center">PORCH PIRACY IS OUT OF CONTROL</h1>
+            <br></br>
+            <h3>For instance...did you know...</h3>
 
-          <h1>WILL ADD SIGNUP FORM HERE</h1>
+            <Stats />
+
+            <h3>Defend your packages from porch pirates like this guy...</h3>
+            <br></br>
+            <br></br>
+            <p>
+              <img
+                className="center"
+                src="https://mynorthwest.com/wp-content/uploads/2019/08/package-thieves.jpg"
+                alt=""
+              ></img>
+            </p>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div>
+              <h2>PackageDefend was created to combat this problem</h2>
+              <br></br>
+              <p>
+                PackageDefend connects people able to receive packages during
+                working hours with those who cannot. People in your neighborhood
+                signup and commit to receive your packages while you go about
+                your day. Then, you schedule a time when it's convenient to you
+                both for you to pick up your package. That simple!
+              </p>
+              <br></br>
+              <br></br>
+              <h3>How it works</h3>
+            </div>
+          </div>
+          <h5>It's easy to begin defending your packages:</h5>
+          <br></br>
+          <p>Step 1: Login or Signup to find PackageDefenders</p>
+          <p>Step 2: Find a PackageDefender convenient to you</p>
+          <p>
+            Step 3: Submit an easy order form with the package information and
+            pay your defender's low fee. Most start at about $1/package
+          </p>
+          <p>Step 4: Pickup your package at a convenient time!</p>
+          <br></br>
+          <br></br>
+          <Link to="/users/login">Click Here to Login!</Link>
+          <br></br>
+          <br></br>
+          <h2>or...</h2>
+          <br></br>
+          <br></br>
+          <SignUpForm />
         </div>
       </React.Fragment>
     );
   }
 }
+export default withRouter(Landing);

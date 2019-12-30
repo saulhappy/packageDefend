@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import "./style.css";
 
 function Find(props) {
@@ -73,6 +73,13 @@ function Find(props) {
           >
             <div>
               <img src={selectedDefender.user.pic_link} alt=""></img>
+              <Form>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  label="Add me to your favorites"
+                />
+              </Form>
               <h3>{selectedDefender.user.f_name}</h3>
               <h5>Defender Rating: {selectedDefender.user.rating}</h5>
               <p>{selectedDefender.user.address}</p>

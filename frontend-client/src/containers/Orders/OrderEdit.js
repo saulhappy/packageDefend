@@ -21,6 +21,10 @@ export class OrderEdit extends Component {
     this.setState({ [name]: value });
   };
 
+  sendUpdatedOrder = updatedOrder => {
+    this.props.updateUserOrdersState(updatedOrder);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -65,6 +69,7 @@ export class OrderEdit extends Component {
       .then(data => {
         console.log(data);
         data.status === 204 && this.props.history.push("/order/updated");
+        this.sendUpdatedOrder(data.order);
       })
       .catch(error => console.log("api errors:", error));
   };
@@ -177,7 +182,9 @@ export class OrderEdit extends Component {
             </Form.Group>
 
             <Form.Group as={Col}>
-              <Form.Label>Package Pickup Date - guestimate is fine!</Form.Label>
+              <Form.Label>
+                Package Pickup Date - guesstimate is fine!
+              </Form.Label>
               <Form.Control
                 name="meeting"
                 type="date"
