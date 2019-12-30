@@ -62,6 +62,13 @@ class OrderForm extends Component {
     }
     this.setState({ formErrors, [name]: value });
   };
+  sendNewOrder = newOrder => {
+    this.props.addNewOrderToState(newOrder);
+  };
+
+  sendUpdatedUser = updatedUser => {
+    this.props.updateUserState(updatedUser);
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -93,6 +100,7 @@ class OrderForm extends Component {
             data.status === 200
               ? this.props.history.push("/orders/success")
               : this.props.history.push("/new_order_error");
+            this.sendNewOrder(data.order);
           })
       );
     } else {

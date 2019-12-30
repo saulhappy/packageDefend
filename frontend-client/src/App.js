@@ -26,6 +26,7 @@ class App extends Component {
     this.state = {
       logged_in: false,
       user: null,
+      // userBalance: null,
       userOrders: null,
       userListings: null,
       userFavs: null,
@@ -125,6 +126,18 @@ class App extends Component {
     });
   };
 
+  addNewOrderToState = newOrder => {
+    this.setState({
+      userOrders: [...this.state.userOrders, newOrder]
+    });
+  };
+
+  // updateUserBalance = newBalance => {
+  //   this.setState({
+  //     user.balance: newBalance
+  //   })
+  // }
+
   render() {
     console.log("app's state: ", this.state);
     return (
@@ -193,7 +206,10 @@ class App extends Component {
               )}
 
               <Route exact path="/order">
-                <OrderForm appState={this.state} />
+                <OrderForm
+                  appState={this.state}
+                  addNewOrderToState={this.addNewOrderToState}
+                />
               </Route>
 
               <Route exact path="/logout" component={Logout} />

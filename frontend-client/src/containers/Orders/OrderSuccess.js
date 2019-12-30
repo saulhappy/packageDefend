@@ -7,7 +7,7 @@ export class Success extends Component {
       <div>
         <h2>Request for Package Defense Sent!</h2>
         <br></br>
-        <Link to="/home">Return to your dashboard</Link>
+        <Link to="/users/home">Return to your dashboard</Link>
       </div>
     );
   }
