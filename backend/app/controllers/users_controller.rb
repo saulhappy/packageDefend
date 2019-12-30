@@ -48,14 +48,13 @@ class UsersController < ApplicationController
   end 
 
   def update
-    puts (user_params)
-    # user = User.find(params[:id])
-    # user.update(user_params)
-    # render json: {
-    #   status: 204,
-    #   message: "user updated",
-    #   user: user
-    # }
+    user = User.find(params[:id])
+    user.update(user_params)
+    render json: {
+      status: 204,
+      message: "user updated",
+      user: user
+    }
 end
 
   private

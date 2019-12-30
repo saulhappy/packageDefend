@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Col } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 export class UserEdit extends Component {
   constructor(props) {
@@ -57,6 +58,7 @@ export class UserEdit extends Component {
   };
 
   render() {
+    console.log("from UserEdit: ", this.props);
     const { f_name, l_name, address, email } = this.props.user;
     return (
       <div>
@@ -117,4 +119,4 @@ export class UserEdit extends Component {
   }
 }
 
-export default UserEdit;
+export default withRouter(UserEdit);

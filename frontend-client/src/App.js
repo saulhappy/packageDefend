@@ -120,7 +120,9 @@ class App extends Component {
   };
 
   updateUserState = updatedUser => {
-    console.log(this.state.updatedUser);
+    this.setState({
+      user: updatedUser
+    });
   };
 
   render() {
@@ -170,7 +172,7 @@ class App extends Component {
               )}
               {this.state.logged_in && (
                 <Route exact path="/user/account/edit">
-                  <UserEdit updateUserState={this.state.updateUserState} />
+                  <UserEdit />
                 </Route>
               )}
               {this.state.logged_in && (
@@ -183,7 +185,10 @@ class App extends Component {
               )}
               {this.state.logged_in && (
                 <Route exact path="/user/account">
-                  <User appState={this.state} />
+                  <User
+                    appState={this.state}
+                    updateUserState={this.updateUserState}
+                  />
                 </Route>
               )}
 

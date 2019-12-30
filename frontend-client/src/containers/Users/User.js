@@ -84,7 +84,11 @@ export class User extends Component {
         <br></br>
         <br></br>
         {this.state.showEdit ? (
-          <UserEdit user={this.props.appState.user} />
+          <UserEdit
+            user={this.props.appState.user}
+            appState={this.props.appState}
+            updateUserState={this.props.updateUserState}
+          />
         ) : null}
       </div>
     );

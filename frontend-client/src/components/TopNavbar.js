@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 
 export const TopNavbar = props => (
   <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
-    {console.log("from Navbar: ", props)}
     <Navbar.Brand href="/">PackageDefend</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
