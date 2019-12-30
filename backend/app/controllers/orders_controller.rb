@@ -54,7 +54,8 @@ class OrdersController < ApplicationController
       order.update(order_params)
       render json: {
         status: 204,
-        message: "order updated"
+        message: "order updated",
+        order: order
       }
   end
 
