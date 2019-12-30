@@ -17,6 +17,10 @@ export class UserEdit extends Component {
     this.setState({ [name]: value });
   };
 
+  sendUpdatedUser = updatedUser => {
+    this.props.updateUserState(updatedUser);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -47,6 +51,7 @@ export class UserEdit extends Component {
       .then(data => {
         console.log(data);
         data.status === 204 && this.props.history.push("/user/updated");
+        this.sendUpdatedUser(data.user);
       })
       .catch(error => console.log("api errors:", error));
   };

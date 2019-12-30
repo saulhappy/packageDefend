@@ -69,6 +69,7 @@ class UsersController < ApplicationController
     # render json: {
     #   status: 204,
     #   message: "user updated"
+    #   user: user
     # }
 end
 

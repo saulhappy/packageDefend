@@ -8,13 +8,12 @@ export const TopNavbar = props => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        <Nav.Link href="/about">About</Nav.Link>
-        {localStorage.getItem("user_id") ? (
+        {props.logged_in ? (
           <Nav.Link href="/users/home">Your Dashboard</Nav.Link>
         ) : (
           <Nav.Link href="/users/new">Sign Up</Nav.Link>
         )}
-        {localStorage.getItem("user_id") ? (
+        {props.logged_in ? (
           <Nav.Link onClick={props.logOutUser} href="/logout">
             Logout
           </Nav.Link>
