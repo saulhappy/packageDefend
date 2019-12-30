@@ -26,19 +26,20 @@ class OrdersController < ApplicationController
       rating = nil
 
       order = Order.new(
-        listing_id = listing_id,
-        user_id = user_id,
-        sender = sender,
-        status = status,
-        name_on_pack = name_on_pack,
-        eta = eta,
-        meeting = meeting,
-        rating = rating)
+        listing_id: listing_id,
+        user_id: user_id,
+        sender: sender,
+        status: status,
+        name_on_pack: name_on_pack,
+        eta: eta,
+        meeting: meeting,
+        rating: rating)
         if order.valid?
           order.save
           render json: {
             status: 200,
-            message: "New order created!"
+            message: "New order created!",
+            order: order
           }
         else
           render json: {

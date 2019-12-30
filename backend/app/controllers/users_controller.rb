@@ -48,27 +48,12 @@ class UsersController < ApplicationController
   end 
 
   def update
-    # sytnax: user.update(field: "value")
-    puts "=========================="
-    puts "user params:"
-    puts(user_params)
-    puts "=========================="
-
-    puts "=========================="
-    puts "user params user_id:"
-    puts(user_params.user_id)
-    puts "=========================="
-
-    puts "=========================="
-    puts "user params address:"
-    puts(user_params.address)
-    puts "=========================="
+    puts (user_params)
     # user = User.find(params[:id])
-
     # user.update(user_params)
     # render json: {
     #   status: 204,
-    #   message: "user updated"
+    #   message: "user updated",
     #   user: user
     # }
 end

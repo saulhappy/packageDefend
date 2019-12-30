@@ -39,9 +39,10 @@ function Find(props) {
       </div>
       <ReactMapGl
         {...viewport}
-        mapboxApiAccessToken={
-          "pk.eyJ1Ijoic2F1bGhhcHB5IiwiYSI6ImNrNG15OGV4YzA0MzMzanBiOHJsMWJ6N24ifQ.nTUuXzPsstEFrfWtH7XnaA"
-        }
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        // mapboxApiAccessToken={
+        //   "pk.eyJ1Ijoic2F1bGhhcHB5IiwiYSI6ImNrNHNvdnN1MTFjOXgza2wxM2MxZnNyM2gifQ.JN9U65xcMGGxkPwZVlcHzw"
+        // }
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
@@ -83,8 +84,14 @@ function Find(props) {
               <h3>{selectedDefender.user.f_name}</h3>
               <h5>Defender Rating: {selectedDefender.user.rating}</h5>
               <p>{selectedDefender.user.address}</p>
-              <p> Price per package: {`$${selectedDefender.price}`}</p>
-              <p> Max Hold Time: {selectedDefender.max_hold}</p>
+              <p> Price per package defended: {`$${selectedDefender.price}`}</p>
+              <p>
+                {" "}
+                How long I'll keep your package: {
+                  selectedDefender.max_hold
+                }{" "}
+                days
+              </p>
               <Button
                 variant="secondary"
                 onClick={listing =>
