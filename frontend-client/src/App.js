@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Landing } from "./containers/Landing/Landing";
-import { About } from "./containers/About/About";
 import SignUpForm from "./containers/Signup/SignUpForm";
 import Success from "./containers/Signup/success";
 import OrderSuccess from "./containers/Orders/OrderSuccess";
@@ -27,6 +26,7 @@ class App extends Component {
     this.state = {
       logged_in: false,
       user: null,
+      // userBalance: null,
       userOrders: null,
       userListings: null,
       userFavs: null,
@@ -120,17 +120,34 @@ class App extends Component {
     });
   };
 
+  updateUserState = updatedUser => {
+    this.setState({
+      user: updatedUser
+    });
+  };
+
+  addNewOrderToState = newOrder => {
+    this.setState({
+      userOrders: [...this.state.userOrders, newOrder]
+    });
+  };
+
+  // updateUserBalance = newBalance => {
+  //   this.setState({
+  //     user.balance: newBalance
+  //   })
+  // }
+
   render() {
     console.log("app's state: ", this.state);
     return (
       <React.Fragment>
         <Router>
-          <TopNavbar user={this.state.user} logOutUser={this.logOutUser} />
+          <TopNavbar appState={this.state} logOutUser={this.logOutUser} />
           <Jumbotron />
           <Layout>
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/about" component={About} />
               <Route exact path="/users/new" component={SignUpForm} />
               <Route exact path="/order/updated" component={OrderUpdated} />
               <Route exact path="/user/updated" component={UserUpdated} />
@@ -181,12 +198,18 @@ class App extends Component {
               )}
               {this.state.logged_in && (
                 <Route exact path="/user/account">
-                  <User appState={this.state} />
+                  <User
+                    appState={this.state}
+                    updateUserState={this.updateUserState}
+                  />
                 </Route>
               )}
 
               <Route exact path="/order">
-                <OrderForm appState={this.state} />
+                <OrderForm
+                  appState={this.state}
+                  addNewOrderToState={this.addNewOrderToState}
+                />
               </Route>
 
               <Route exact path="/logout" component={Logout} />

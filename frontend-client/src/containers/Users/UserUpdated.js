@@ -7,7 +7,7 @@ export class UserUpdated extends Component {
       <div>
         <h2>Account information updated!</h2>
         <br></br>
-        <Link to="/home">Return to your dashboard</Link>
+        <Link to="/user/account">Go back to your account page</Link>
       </div>
     );
   }

@@ -32,16 +32,17 @@ function Find(props) {
     props.setClickedDefenderListing(listing);
     props.history.push("/order");
   };
+  console.log("from find/map: ", props);
+
   return (
     <div>
       <div>
         <Link to="/users/home">Return to Your Dashboard</Link>
       </div>
+      <br></br>
       <ReactMapGl
         {...viewport}
-        mapboxApiAccessToken={
-          "pk.eyJ1Ijoic2F1bGhhcHB5IiwiYSI6ImNrNG15OGV4YzA0MzMzanBiOHJsMWJ6N24ifQ.nTUuXzPsstEFrfWtH7XnaA"
-        }
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
@@ -62,14 +63,17 @@ function Find(props) {
             ></Button>
           </Marker>
         ))}
+        {selectedDefender
+          ? console.log("selectedDefender: ", selectedDefender)
+          : null}
         {selectedDefender ? (
           <Popup
             latitude={parseFloat(selectedDefender.user.lat)}
             longitude={parseFloat(selectedDefender.user.long)}
-            // POP UP LINK/BUTTONS DONT WORK IF THIS IS ACTIVE
-            // onClose={() => {
-            //   setSelectedDefender(null);
-            // }}
+            closeOnClick={false}
+            onClose={() => {
+              setSelectedDefender(null);
+            }}
           >
             <div>
               <img src={selectedDefender.user.pic_link} alt=""></img>
@@ -83,8 +87,14 @@ function Find(props) {
               <h3>{selectedDefender.user.f_name}</h3>
               <h5>Defender Rating: {selectedDefender.user.rating}</h5>
               <p>{selectedDefender.user.address}</p>
-              <p> Price per package: {`$${selectedDefender.price}`}</p>
-              <p> Max Hold Time: {selectedDefender.max_hold}</p>
+              <p> Price per package defended: {`$${selectedDefender.price}`}</p>
+              <p>
+                {" "}
+                How long I'll keep your package: {
+                  selectedDefender.max_hold
+                }{" "}
+                days
+              </p>
               <Button
                 variant="secondary"
                 onClick={listing =>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Col } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 export class UserEdit extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ export class UserEdit extends Component {
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+
+  sendUpdatedUser = updatedUser => {
+    this.props.updateUserState(updatedUser);
   };
 
   handleSubmit = e => {
@@ -47,11 +52,13 @@ export class UserEdit extends Component {
       .then(data => {
         console.log(data);
         data.status === 204 && this.props.history.push("/user/updated");
+        this.sendUpdatedUser(data.user);
       })
       .catch(error => console.log("api errors:", error));
   };
 
   render() {
+    console.log("from UserEdit: ", this.props);
     const { f_name, l_name, address, email } = this.props.user;
     return (
       <div>
@@ -112,4 +119,4 @@ export class UserEdit extends Component {
   }
 }
 
-export default UserEdit;
+export default withRouter(UserEdit);
