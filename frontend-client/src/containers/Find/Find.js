@@ -32,11 +32,14 @@ function Find(props) {
     props.setClickedDefenderListing(listing);
     props.history.push("/order");
   };
+  console.log("from find/map: ", props);
+
   return (
     <div>
       <div>
         <Link to="/users/home">Return to Your Dashboard</Link>
       </div>
+      <br></br>
       <ReactMapGl
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -60,14 +63,17 @@ function Find(props) {
             ></Button>
           </Marker>
         ))}
+        {selectedDefender
+          ? console.log("selectedDefender: ", selectedDefender)
+          : null}
         {selectedDefender ? (
           <Popup
             latitude={parseFloat(selectedDefender.user.lat)}
             longitude={parseFloat(selectedDefender.user.long)}
-            // POP UP LINK/BUTTONS DONT WORK IF THIS IS ACTIVE
-            // onClose={() => {
-            //   setSelectedDefender(null);
-            // }}
+            closeOnClick={false}
+            onClose={() => {
+              setSelectedDefender(null);
+            }}
           >
             <div>
               <img src={selectedDefender.user.pic_link} alt=""></img>
