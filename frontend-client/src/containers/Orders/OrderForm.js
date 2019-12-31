@@ -66,6 +66,13 @@ class OrderForm extends Component {
     this.props.addNewOrderToState(newOrder);
   };
 
+  sendNewUserBalance() {
+    let newBalance =
+      this.props.appState.userBalance -
+      this.props.appState.clickedDefenderListing.price;
+    this.props.updateUserBalance(newBalance);
+  }
+
   sendUpdatedUser = updatedUser => {
     this.props.updateUserState(updatedUser);
   };
@@ -101,6 +108,7 @@ class OrderForm extends Component {
               ? this.props.history.push("/orders/success")
               : this.props.history.push("/new_order_error");
             this.sendNewOrder(data.order);
+            this.sendNewUserBalance();
           })
       );
     } else {

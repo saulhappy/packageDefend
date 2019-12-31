@@ -16,7 +16,6 @@ export class User extends Component {
       l_name,
       address,
       email,
-      balance,
       rating,
       pic_link,
       created_at: memberSince
@@ -61,7 +60,7 @@ export class User extends Component {
           </Row>
           <Row>
             <Col>
-              <h5>Balance: {balance}</h5>
+              <h5>Balance: {`$${this.props.appState.userBalance}`}</h5>
             </Col>
             <Col>
               <h5>Rating: {rating}</h5>

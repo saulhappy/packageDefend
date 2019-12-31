@@ -26,7 +26,7 @@ class App extends Component {
     this.state = {
       logged_in: false,
       user: null,
-      // userBalance: null,
+      userBalance: null,
       userOrders: null,
       userListings: null,
       userFavs: null,
@@ -44,6 +44,13 @@ class App extends Component {
       user: newUser
     });
   };
+
+  setUserBalanceState = newUserBalance => {
+    this.setState({
+      userBalance: newUserBalance
+    });
+  };
+
   setUserOrderState = newUserOrders => {
     this.setState({
       userOrders: newUserOrders
@@ -132,11 +139,11 @@ class App extends Component {
     });
   };
 
-  // updateUserBalance = newBalance => {
-  //   this.setState({
-  //     user.balance: newBalance
-  //   })
-  // }
+  updateUserBalance = newBalance => {
+    this.setState({
+      userBalance: newBalance
+    });
+  };
 
   render() {
     console.log("app's state: ", this.state);
@@ -160,6 +167,7 @@ class App extends Component {
                   setUserListingState={this.setUserListingState}
                   setUserFavsState={this.setUserFavsState}
                   setAllListings={this.setAllListings}
+                  setUserBalanceState={this.setUserBalanceState}
                 />
               </Route>
               {this.state.logged_in && (
@@ -209,6 +217,7 @@ class App extends Component {
                 <OrderForm
                   appState={this.state}
                   addNewOrderToState={this.addNewOrderToState}
+                  updateUserBalance={this.updateUserBalance}
                 />
               </Route>
 
