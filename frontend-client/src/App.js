@@ -29,8 +29,8 @@ class App extends Component {
       userBalance: null,
       userOrders: null,
       userListings: null,
-      userFavs: null,
       allListings: null,
+      userFavs: null,
       clickedDefenderListing: null,
       clickedOrder: null,
       orderBeingEdit: null,
@@ -61,6 +61,11 @@ class App extends Component {
       userListings: newUserListings
     });
   };
+
+  setAllListings = data => {
+    this.setState({ allListings: data });
+  };
+
   setUserFavsState = newUserFavs => {
     this.setState({
       userFavs: newUserFavs
@@ -82,12 +87,6 @@ class App extends Component {
       clickedOrder: order_id
     });
     this.setOrderBeingEdit(order_id);
-  };
-
-  setAllListings = data => {
-    this.setState({
-      allListings: data
-    });
   };
 
   setOrderBeingEdit(order_id) {

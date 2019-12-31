@@ -226,7 +226,7 @@ export class OrderEdit extends Component {
               </Form.Control>
             </Form.Group>
           </Form.Row>
-          <Button variant="secondary" type="submit">
+          <Button variant="dark" type="submit" id="otherButtons">
             Submit
           </Button>
         </Form>

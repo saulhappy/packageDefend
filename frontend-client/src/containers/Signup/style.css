@@ -3,3 +3,7 @@
   font-size: 0.75em;
   display: relative;
 }
+
+#otherButtons {
+  border-radius: 42px;
+}

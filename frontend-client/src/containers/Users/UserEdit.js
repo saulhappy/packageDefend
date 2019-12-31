@@ -107,7 +107,7 @@ export class UserEdit extends Component {
             </Form.Group>
           </Form.Row>
 
-          <Button variant="secondary" type="submit">
+          <Button variant="dark" type="submit" id="otherButtons">
             Submit
           </Button>
         </Form>

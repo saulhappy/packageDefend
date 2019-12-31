@@ -73,8 +73,9 @@ export class User extends Component {
         <br></br>
 
         <Button
-          variant="secondary"
+          variant="dark"
           size="lg"
+          id="otherButtons"
           onClick={() => this.setState({ showEdit: !this.state.showEdit })}
         >
           Edit Your Account Information

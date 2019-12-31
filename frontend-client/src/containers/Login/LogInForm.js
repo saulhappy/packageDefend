@@ -42,11 +42,9 @@ function LogInForm(props) {
                 data.orders ? props.setUserOrderState(data.orders) : null
               );
 
-            fetch(`http://localhost:3000/api/users/${data.user.id}`)
+            fetch(`http://localhost:3000/api/listings`)
               .then(response => response.json())
-              .then(data =>
-                data.listings ? props.setUserListingState(data.listings) : null
-              );
+              .then(data => props.setAllListings(data));
 
             fetch(`http://localhost:3000/api/users/${data.user.id}`)
               .then(response => response.json())
@@ -54,9 +52,11 @@ function LogInForm(props) {
                 data.favorites ? props.setUserFavsState(data.favorites) : null
               );
 
-            fetch(`http://localhost:3000/api/listings`)
+            fetch(`http://localhost:3000/api/users/${data.user.id}`)
               .then(response => response.json())
-              .then(data => props.setAllListings(data));
+              .then(data =>
+                data.listings ? props.setUserListingState(data.listings) : null
+              );
 
             props.history.push("/users/home");
             break;
@@ -103,8 +103,8 @@ function LogInForm(props) {
             placeholder="Password"
           />
         </Form.Group>
-
-        <Button bg="dark" variant="dark" type="submit">
+        <br></br>
+        <Button bg="dark" variant="dark" type="submit" id="otherButtons">
           Login
         </Button>
       </Form>

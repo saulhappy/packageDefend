@@ -201,7 +201,8 @@ class SignupForm extends Component {
               </span>
             )}
           </Form.Group>
-          <Button bg="dark" variant="dark" type="submit">
+          <br></br>
+          <Button bg="dark" variant="dark" type="submit" id="otherButtons">
             Sign Me Up!
           </Button>
         </Form>

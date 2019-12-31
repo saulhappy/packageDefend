@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 export class Home extends Component {
   render() {
@@ -14,7 +15,7 @@ export class Home extends Component {
             <Row>
               <Col>
                 <Link to="/find">
-                  <Button variant="secondary" size="lg">
+                  <Button variant="secondary" size="lg" id="myButton">
                     {" "}
                     Find Package Defenders
                   </Button>
@@ -23,11 +24,11 @@ export class Home extends Component {
 
               <Col>
                 {" "}
-                <Button variant="secondary" size="lg">
+                <Button variant="secondary" size="lg" id="myButton">
                   {" "}
                   Your{" "}
                   <span role="img" aria-label="heart">
-                    ❤
+                    💕
                   </span>{" "}
                   Defenders
                 </Button>
@@ -37,10 +38,11 @@ export class Home extends Component {
             <Row>
               <Col>
                 <Link to="/orders/history">
-                  <Button variant="secondary" size="lg">
+                  <Button variant="secondary" size="lg" id="myButton">
                     {" "}
                     Packages Defended{" "}
                     <span role="img" aria-label="package">
+                      {" "}
                       📦
                     </span>
                   </Button>
@@ -49,7 +51,7 @@ export class Home extends Component {
               <Col>
                 {" "}
                 <Link to="/user/account">
-                  <Button variant="secondary" size="lg">
+                  <Button variant="secondary" size="lg" id="myButton">
                     {" "}
                     Your Account{" "}
                   </Button>
