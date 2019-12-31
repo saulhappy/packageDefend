@@ -34,7 +34,7 @@ function LogInForm(props) {
         switch (data.status) {
           case 200:
             props.setUserState(data.user);
-            localStorage.setItem("user_id", data.user.id);
+            props.setUserBalanceState(data.user.balance);
 
             fetch(`http://localhost:3000/api/users/${data.user.id}`)
               .then(response => response.json())
