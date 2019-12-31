@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
         rating: rating)
         if order.valid?
           order.save
+          user = User.find(user_id)
+          price = Listing.find(listing_id).price
+          user.update(balance: user.balance - price)
           render json: {
             status: 200,
             message: "New order created!",
