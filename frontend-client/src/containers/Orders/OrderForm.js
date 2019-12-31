@@ -254,8 +254,8 @@ class OrderForm extends Component {
               )}
             </Form.Group>
           </Form.Row>
-
-          <Button bg="dark" variant="dark" type="submit">
+          <br></br>
+          <Button bg="dark" variant="dark" type="submit" id="otherButtons">
             Defend my package!
           </Button>
         </Form>

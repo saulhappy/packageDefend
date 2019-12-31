@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Favorite from "../../components/Favorites/Favorite";
 import "./style.css";
 
 function Find(props) {
@@ -35,79 +38,83 @@ function Find(props) {
   console.log("from find/map: ", props);
 
   return (
-    <div>
-      <div>
-        <Link to="/users/home">Return to Your Dashboard</Link>
-      </div>
-      <br></br>
-      <ReactMapGl
-        {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        onViewportChange={viewport => {
-          setViewport(viewport);
-        }}
-        mapStyle="mapbox://styles/saulhappy/ck4n33nkq0p791cmzwzkkb2xg"
-      >
-        {props.allListings.map(listing => (
-          <Marker
-            key={[listing.id]}
-            latitude={parseFloat(listing.user.lat)}
-            longitude={parseFloat(listing.user.long)}
-          >
-            <Button
-              className="marker"
-              onClick={e => {
-                e.preventDefault();
-                setSelectedDefender(listing);
-              }}
-            ></Button>
-          </Marker>
-        ))}
-        {selectedDefender
-          ? console.log("selectedDefender: ", selectedDefender)
-          : null}
-        {selectedDefender ? (
-          <Popup
-            latitude={parseFloat(selectedDefender.user.lat)}
-            longitude={parseFloat(selectedDefender.user.long)}
-            closeOnClick={false}
-            onClose={() => {
-              setSelectedDefender(null);
-            }}
-          >
-            <div>
-              <img src={selectedDefender.user.pic_link} alt=""></img>
-              <Form>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  label="Add me to your favorites"
-                />
-              </Form>
-              <h3>{selectedDefender.user.f_name}</h3>
-              <h5>Defender Rating: {selectedDefender.user.rating}</h5>
-              <p>{selectedDefender.user.address}</p>
-              <p> Price per package defended: {`$${selectedDefender.price}`}</p>
-              <p>
-                {" "}
-                How long I'll keep your package: {
-                  selectedDefender.max_hold
-                }{" "}
-                days
-              </p>
+    <Container>
+      <Row>
+        <div>
+          <Link to="/users/home">Return to Your Dashboard</Link>
+        </div>
+        <br></br>
+        <br></br>
+        <ReactMapGl
+          {...viewport}
+          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+          onViewportChange={viewport => {
+            setViewport(viewport);
+          }}
+          mapStyle="mapbox://styles/saulhappy/ck4n33nkq0p791cmzwzkkb2xg"
+        >
+          {props.allListings.map(listing => (
+            <Marker
+              key={[listing.id]}
+              latitude={parseFloat(listing.user.lat)}
+              longitude={parseFloat(listing.user.long)}
+            >
               <Button
-                variant="secondary"
-                onClick={listing =>
-                  sendClickedDefenderListing(selectedDefender)
-                }
-              >
-                Defend packages with me!
-              </Button>
-            </div>
-          </Popup>
-        ) : null}
-      </ReactMapGl>
-    </div>
+                className="marker"
+                onClick={e => {
+                  e.preventDefault();
+                  setSelectedDefender(listing);
+                }}
+              ></Button>
+            </Marker>
+          ))}
+          {selectedDefender
+            ? console.log("selectedDefender: ", selectedDefender)
+            : null}
+          {selectedDefender ? (
+            <Popup
+              latitude={parseFloat(selectedDefender.user.lat)}
+              longitude={parseFloat(selectedDefender.user.long)}
+              closeOnClick={false}
+              onClose={() => {
+                setSelectedDefender(null);
+              }}
+            >
+              <div>
+                <img src={selectedDefender.user.pic_link} alt=""></img>
+                <br></br>
+
+                <Favorite />
+                <h3>{selectedDefender.user.f_name}</h3>
+                <h5>Defender Rating: {selectedDefender.user.rating}</h5>
+                <p>{selectedDefender.user.address}</p>
+                <p>
+                  {" "}
+                  Price per package defended: {`$${selectedDefender.price}`}
+                </p>
+                <p>
+                  {" "}
+                  How long I'll keep your package: {
+                    selectedDefender.max_hold
+                  }{" "}
+                  days
+                </p>
+                <br></br>
+                <Button
+                  variant="dark"
+                  onClick={listing =>
+                    sendClickedDefenderListing(selectedDefender)
+                  }
+                  id="otherButtons"
+                >
+                  Defend packages with me!
+                </Button>
+              </div>
+            </Popup>
+          ) : null}
+        </ReactMapGl>
+      </Row>
+    </Container>
   );
 }
 
