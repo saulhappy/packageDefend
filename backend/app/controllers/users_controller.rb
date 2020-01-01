@@ -63,7 +63,7 @@ end
   def user_serializer
     {
       :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link, :lat, :long],
-      :include => [:orders, :listings, :comments, :favorites] }
+      :include => [:orders, :listings, :comments, :favoritesiis] }
   end
 
   def user_params

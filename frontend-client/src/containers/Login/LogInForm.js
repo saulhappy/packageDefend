@@ -53,7 +53,9 @@ function LogInForm(props) {
             fetch(`http://localhost:3000/api/users/${data.user.id}`)
               .then(response => response.json())
               .then(data =>
-                data.favorites ? props.setUserFavsState(data.favorites) : null
+                data.favoritesiis
+                  ? props.setUserFavsState(data.favoritesiis)
+                  : null
               );
 
             fetch(`http://localhost:3000/api/users/${data.user.id}`)

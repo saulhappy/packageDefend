@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_003004) do
+ActiveRecord::Schema.define(version: 2020_01_01_201347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 2019_12_31_003004) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "listing_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favoritesiis", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "listing_id"
+    t.integer "lst_user_id"
+    t.float "lst_price"
+    t.string "lst_max_hold"
+    t.string "integer"
+    t.string "lst_f_name"
+    t.string "lst_l_name"
+    t.string "lst_email"
+    t.string "lst_address"
+    t.float "lst_rating"
+    t.string "lst_pic_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

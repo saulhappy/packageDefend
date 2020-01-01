@@ -157,6 +157,7 @@ class App extends Component {
         <Router>
           <TopNavbar appState={this.state} logOutUser={this.logOutUser} />
           <Jumbotron />
+
           <Layout>
             <Switch>
               <Route exact path="/" component={Landing} />
