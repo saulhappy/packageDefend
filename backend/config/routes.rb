@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     post 'orders/new', to: 'orders#create'
     patch 'orders/update/:id', to: 'orders#update'
     
+    resources :favorites
+    get 'favorites', to: 'favorties#index'
+    get '/favorites/:id', to: 'favorites#show'
+    
     resources :sessions, only: [:new, :create, :destroy]
     get "/login", to: "sessions#new", as: "login"
     post "/login", to: "sessions#create"

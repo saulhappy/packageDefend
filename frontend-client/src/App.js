@@ -19,6 +19,7 @@ import OrderUpdated from "./containers/Orders/OrderUpdated";
 import UserUpdated from "./containers/Users/UserUpdated";
 import User from "./containers/Users/User";
 import UserEdit from "./containers/Users/UserEdit";
+import Favorites from "./containers/Favorites/Favorites";
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends Component {
       userOrders: null,
       userListings: null,
       allListings: null,
+      allFavs: null,
       userFavs: null,
       clickedDefenderListing: null,
       clickedOrder: null,
@@ -64,6 +66,10 @@ class App extends Component {
 
   setAllListings = data => {
     this.setState({ allListings: data });
+  };
+
+  setAllFavs = data => {
+    this.setState({ allFavs: data });
   };
 
   setUserFavsState = newUserFavs => {
@@ -167,11 +173,15 @@ class App extends Component {
                   setUserFavsState={this.setUserFavsState}
                   setAllListings={this.setAllListings}
                   setUserBalanceState={this.setUserBalanceState}
+                  setAllFavs={this.setAllFavs}
                 />
               </Route>
               {this.state.logged_in && (
                 <Route exact path="/users/home">
-                  <Home userState={this.state} />
+                  <Home
+                    userState={this.state}
+                    updateUserFavListingState={this.updateUserFavListingState}
+                  />
                 </Route>
               )}
               {this.state.logged_in && (
@@ -219,6 +229,12 @@ class App extends Component {
                   updateUserBalance={this.updateUserBalance}
                 />
               </Route>
+
+              {this.state.logged_in && (
+                <Route exact path="/users/favorites">
+                  <Favorites appState={this.state} />
+                </Route>
+              )}
 
               <Route exact path="/logout" component={Logout} />
               <Route component={NotFound} />

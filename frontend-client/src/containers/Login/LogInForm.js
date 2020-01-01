@@ -46,6 +46,10 @@ function LogInForm(props) {
               .then(response => response.json())
               .then(data => props.setAllListings(data));
 
+            fetch(`http://localhost:3000/api/favorites`)
+              .then(response => response.json())
+              .then(data => props.setAllFavs(data));
+
             fetch(`http://localhost:3000/api/users/${data.user.id}`)
               .then(response => response.json())
               .then(data =>
