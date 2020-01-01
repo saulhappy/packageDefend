@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favoritesiis
   scope '/api' do
     get '/users', to: 'users#index'
     get 'users/new', to: 'users#create'
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
     resources :favorites
     get 'favorites', to: 'favorties#index'
     get '/favorites/:id', to: 'favorites#show'
+
+    resources :favoritesiis
+    get 'favoritesiis', to: 'favoritesiis#index'
+    get '/favoritesiis/:id', to: 'favoritesiis#show'
     
     resources :sessions, only: [:new, :create, :destroy]
     get "/login", to: "sessions#new", as: "login"

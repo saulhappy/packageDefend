@@ -1,29 +1,21 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import CardDeck from "react-bootstrap/CardDeck";
+import FavoriteCard from "../../components/Favorites/FavoriteCard";
 
 export class Favorites extends Component {
-  constructor() {
-    super();
-    this.state = {
-      favListings: null
-    };
-  }
-
-  //   componentDidMount() {
-  //     let favListings = [];
-  //     if (this.props.appState.userFavs) {
-  //       favListings.push(this.props.appState.userFavs.listing_id);
-  //     }
-  //     this.setState({
-  //       favListings: favListings
-  //     });
+  //   constructor() {
+  //     super();
+  //     this.state = {
+  //       favListings: null
+  //     };
   //   }
 
   render() {
     console.log("from favorites props: ", this.props);
-    console.log("from favorites state: ", this.state);
-    return this.state.favListings ? (
+    let favCards = this.props.appState.userFavs;
+    return this.props.appState.userFavs ? (
       <Container>
         <div>
           <Link to="/users/home">Return to Your Dashboard</Link>
@@ -33,6 +25,12 @@ export class Favorites extends Component {
         <h2>Your Favorite Package Defenders</h2>
         <br></br>
         <br></br>
+
+        <CardDeck>
+          {favCards.map(fav => (
+            <FavoriteCard key={fav.id} fav={fav} />
+          ))}
+        </CardDeck>
       </Container>
     ) : (
       <Container>
