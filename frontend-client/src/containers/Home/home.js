@@ -23,15 +23,16 @@ export class Home extends Component {
               </Col>
 
               <Col>
-                {" "}
-                <Button variant="secondary" size="lg" id="myButton">
-                  {" "}
-                  Your{" "}
-                  <span role="img" aria-label="heart">
-                    💕
-                  </span>{" "}
-                  Defenders
-                </Button>
+                <Link to="/users/favorites">
+                  <Button variant="secondary" size="lg" id="myButton">
+                    {" "}
+                    Your{" "}
+                    <span role="img" aria-label="heart">
+                      💕
+                    </span>{" "}
+                    Defenders
+                  </Button>
+                </Link>
               </Col>
             </Row>
             <br></br>

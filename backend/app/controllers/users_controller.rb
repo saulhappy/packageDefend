@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @users = User.all
     if @users
       render json: @users.to_json(user_serializer) 
+      # render json: @users
     else
       render json: {
         status:404,
@@ -62,7 +63,7 @@ end
   def user_serializer
     {
       :only => [:id, :f_name, :l_name, :email, :address, :balance, :rating, :pic_link, :lat, :long],
-      :include => [:orders, :listings, :comments, :favorites]}
+      :include => [:orders, :listings, :comments, :favorites] }
   end
 
   def user_params
