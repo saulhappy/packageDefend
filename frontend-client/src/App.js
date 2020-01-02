@@ -156,6 +156,25 @@ class App extends Component {
     });
   };
 
+  addFav = listing => {
+    let fav = {
+      id: this.state.userFavs.length + 1,
+      listing_id: listing.id,
+      lst_price: listing.price,
+      created_at: Date().substr(0, 15),
+      lst_max_hold: listing.max_hold,
+      lst_f_name: listing.user.f_name,
+      lst_l_name: listing.user.l_name,
+      lst_email: listing.user.email,
+      lst_address: listing.user.address,
+      lst_rating: listing.user.rating,
+      lst_pic_link: listing.user.pic_link
+    };
+    this.setState({
+      userFavs: [...this.state.userFavs, fav]
+    });
+  };
+
   render() {
     console.log("app's state: ", this.state);
     return (
@@ -217,6 +236,7 @@ class App extends Component {
                   <Find
                     allListings={this.state.allListings}
                     setClickedDefenderListing={this.setClickedDefenderListing}
+                    addFav={this.addFav}
                   />
                 </Route>
               )}

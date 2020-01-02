@@ -5,13 +5,6 @@ import CardDeck from "react-bootstrap/CardDeck";
 import FavoriteCard from "../../components/Favorites/FavoriteCard";
 
 export class Favorites extends Component {
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //       favListings: null
-  //     };
-  //   }
-
   render() {
     console.log("from favorites props: ", this.props);
     let favCards = this.props.appState.userFavs;

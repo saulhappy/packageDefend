@@ -35,7 +35,6 @@ function Find(props) {
     props.setClickedDefenderListing(listing);
     props.history.push("/order");
   };
-  console.log("from find/map: ", props);
 
   return (
     <Container>
@@ -84,7 +83,10 @@ function Find(props) {
                 <img src={selectedDefender.user.pic_link} alt=""></img>
                 <br></br>
 
-                <Favorite />
+                <Favorite
+                  selectedListing={selectedDefender}
+                  addFav={props.addFav}
+                />
                 <h3>{selectedDefender.user.f_name}</h3>
                 <h5>Defender Rating: {selectedDefender.user.rating}</h5>
                 <p>{selectedDefender.user.address}</p>
