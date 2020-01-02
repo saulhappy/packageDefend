@@ -28,7 +28,11 @@ export class Favorites extends Component {
 
         <CardDeck>
           {favCards.map(fav => (
-            <FavoriteCard key={fav.id} fav={fav} />
+            <FavoriteCard
+              key={fav.id}
+              fav={fav}
+              removeFav={this.props.removeFav}
+            />
           ))}
         </CardDeck>
       </Container>

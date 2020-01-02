@@ -150,6 +150,12 @@ class App extends Component {
     });
   };
 
+  removeFav = Delfav => {
+    this.setState({
+      userFavs: this.state.userFavs.filter(fav => fav !== Delfav)
+    });
+  };
+
   render() {
     console.log("app's state: ", this.state);
     return (
@@ -233,7 +239,7 @@ class App extends Component {
 
               {this.state.logged_in && (
                 <Route exact path="/users/favorites">
-                  <Favorites appState={this.state} />
+                  <Favorites appState={this.state} removeFav={this.removeFav} />
                 </Route>
               )}
 
