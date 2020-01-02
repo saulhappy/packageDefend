@@ -4,9 +4,6 @@ import { Button } from "react-bootstrap";
 
 export class FavoriteCard extends Component {
   render() {
-    console.log("props from FavoriteCard: ", this.props);
-    // const { fav } = this.props.fav;
-    // debugger;
     const {
       lst_f_name,
       lst_email,
@@ -33,7 +30,11 @@ export class FavoriteCard extends Component {
             </Card.Footer>
             <br></br>
             <br></br>
-            <Button variant="dark" id="otherButtons">
+            <Button
+              variant="danger"
+              id="otherButtons"
+              onClick={fav => this.props.removeFav(this.props.fav)}
+            >
               Remove
             </Button>
           </Card.Body>

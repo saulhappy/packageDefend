@@ -5,13 +5,6 @@ import CardDeck from "react-bootstrap/CardDeck";
 import FavoriteCard from "../../components/Favorites/FavoriteCard";
 
 export class Favorites extends Component {
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //       favListings: null
-  //     };
-  //   }
-
   render() {
     console.log("from favorites props: ", this.props);
     let favCards = this.props.appState.userFavs;
@@ -28,7 +21,11 @@ export class Favorites extends Component {
 
         <CardDeck>
           {favCards.map(fav => (
-            <FavoriteCard key={fav.id} fav={fav} />
+            <FavoriteCard
+              key={fav.id}
+              fav={fav}
+              removeFav={this.props.removeFav}
+            />
           ))}
         </CardDeck>
       </Container>
