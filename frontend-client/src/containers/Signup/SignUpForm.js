@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Col, Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 
 const emailRegex = RegExp(
@@ -214,4 +215,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);

@@ -8,7 +8,7 @@ const Styles = styled.div`
     background: url(${boxes}) no-repeat fixed bottom;
     background-size: cover;
     color: #efefef;
-    min-height: 400px !important;
+    min-height: 250px !important;
     // height: 200;
     position: relative;
     z-index: -2;
