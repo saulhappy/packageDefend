@@ -8,7 +8,7 @@ export class Favorites extends Component {
   render() {
     console.log("from favorites props: ", this.props);
     let favCards = this.props.appState.userFavs;
-    return this.props.appState.userFavs ? (
+    return this.props.appState.userFavs.length > 0 ? (
       <Container>
         <div>
           <Link to="/users/home">Return to Your Dashboard</Link>
