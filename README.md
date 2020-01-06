@@ -8,6 +8,7 @@ Module Five Final Project: packageDefend
 * [Backend Details](#backend-details)
 * [Fronted Details](#frontend-details)
 * [Demo](#demo)
+* [Deployment](#deployment)
 
 ---
 
@@ -41,4 +42,8 @@ A single-page React.js application serves as the frontend. Other techinical deta
 - Various types of components (class, styled, functional using hooks) mainly for educational purposes. 
 
 ## Demo
-Video demo to be linked later. 
+Video demo to be linked later.
+
+## Deployment
+This project will be deployed to Heroku in a future date, with link and further instructions provided.
+
