@@ -26,7 +26,7 @@ The site allows users to create an account, search for packageDefenders on a map
 This application was written in Ruby using Rails as an API. The frontend was written in React, using class, styled, and functional components. No state management tools (e.g. Redux) were used. 
 
 ### Backend Details 
-The application uses Rails as an API with with a Postgres database. It uses the following[Ruby Gems](https://rubygems.org/):
+The application uses Rails as an API with with a Postgres database. It uses the following [Ruby Gems](https://rubygems.org/):
 
 - [bcrypt](https://rubygems.org/gems/bcrypt): A secure hash algorithm designed by The OpenBSD project for hashing passwords.
 - [Active Model Serializer](https://rubygems.org/gems/active_model_serializers/versions/0.10.2): to generate JSON responses from frontend client requests. 
