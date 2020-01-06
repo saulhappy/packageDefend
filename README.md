@@ -37,6 +37,8 @@ The application uses Rails as an API with with a Postgres database. It uses the 
 A single-page React.js application serves as the frontend. Other techinical details include:
 - [React Bootstrap](https://react-bootstrap.github.io/): for reusable component generation, such as buttons, forms, and containers.
 - [Mapbox](https://www.mapbox.com/): to generate the maps where each packageDefender is located
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start): for page routing and user experience. 
+- Various types of components (class, styled, functional using hooks) mainly for educational purposes. 
 
 ## Demo
 Video demo to be linked later. 
