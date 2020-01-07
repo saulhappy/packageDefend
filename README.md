@@ -1,4 +1,3 @@
-(WORK IN PROGRESS)
 Module Five Final Project: packageDefend
 ====================================
 
