@@ -6,6 +6,7 @@ Module Five Final Project: packageDefend
 * [Technical Information](#technical-information)
 * [Backend Details](#backend-details)
 * [Fronted Details](#frontend-details)
+* [Known Defenciencies](#known-defenciencies)
 * [Demo](#demo)
 * [Deployment](#deployment)
 * [Contact](#contact)
@@ -40,6 +41,13 @@ A single-page React.js application serves as the frontend. Other techinical deta
 - [Mapbox](https://www.mapbox.com/): to generate the maps where each packageDefender is located
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start): for page routing and user experience. 
 - Various types of components (class, styled, functional using hooks) mainly for educational purposes. 
+
+## Known Defenciencies
+- Favorites Model: only has backend functionality
+- Comments Model: was not implemented
+- Session terminated on refresh
+
+
 
 ## Demo
 Click the image below to be redirected to a demo video.
