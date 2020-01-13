@@ -14,7 +14,7 @@ Module Five Final Project: packageDefend
 ---
 
 ## General Information
-This project, the capstone of MOD 5 of Flatiron School's Immersive Software Engineering course, is a web application powered by a Ruby on Rails backened used as an API, and a React.js frontend. The application is called packageDefend, a website created to combat the growing problem of porch pirates. It does so by connecting those expecting a delivery of packages, but unable to receive a package personally, with individuals, such as stay-at-home moms and dads, others that work from home, etc. that can accept delivery, and thus, be a packageDefender. 
+This project, the capstone of MOD 5 of Flatiron School's Immersive Software Engineering course, is a web application powered by a Ruby on Rails backend used as an API, and a React.js frontend. The application is called packageDefend, a website created to combat the growing problem of porch pirates. It does so by connecting those expecting a delivery of packages, but unable to receive a package personally, with individuals, such as stay-at-home moms and dads, others that work from home, etc. that can accept delivery, and thus, be a packageDefender. 
 
 The site allows users to create an account, search for packageDefenders on a map, create an order, and schedule meetings to pickup their packages. Other functionalities include:
 
