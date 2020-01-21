@@ -58,7 +58,6 @@ Click the image below to be redirected to a demo video.
 This project will be deployed to Heroku in a future date, with link and further instructions provided.
 
 ## Contact
-**Saul Feliz** [LinkedIn](https://www.linkedin.com/in/saul-feliz-ba8bab1/) 
-[Portfolio](https://saulfeliz.com/)
-646634@gmail.com
+**Saul Feliz** [LinkedIn](https://www.linkedin.com/in/saul-feliz-ba8bab1/) // [Portfolio](https://saulfeliz.com/)
+
 
