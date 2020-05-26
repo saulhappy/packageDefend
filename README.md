@@ -51,7 +51,7 @@ A single-page React.js application serves as the frontend. Other techinical deta
 
 ## Demo
 Click the video image below to be redirected to a demo video.
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/hMJTQUrsBmk/0.jpg)](http://www.youtube.com/watch?v=hMJTQUrsBmk)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/6DF7TgVmXiI/0.jpg)](https://youtu.be/6DF7TgVmXiI)
 
 
 ## Contact
