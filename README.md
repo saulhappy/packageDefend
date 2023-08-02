@@ -55,6 +55,6 @@ Click the video image below to be redirected to a demo video.
 
 
 ## Contact
-**Saul Feliz** [LinkedIn](https://www.linkedin.com/in/saul-feliz-ba8bab1/) // [Portfolio](https://saulfeliz.com/)
+**Saul Feliz** [LinkedIn](https://www.linkedin.com/in/saul-feliz/)
 
 
